@@ -111,9 +111,12 @@ object QuantumContent extends ContentHolder
 
     //Register Fluids
     FluidRegistry.registerFluid(QuantumContent.fluidUraniumHexaflouride)
-    FluidRegistry.registerFluid(QuantumContent.fluidSteam)
-    FluidRegistry.registerFluid(QuantumContent.getFluidTritium)
-    FluidRegistry.registerFluid(QuantumContent.FLUID_DEUTERIUM)
+    if (!FluidRegistry.isFluidRegistered("steam"))
+      FluidRegistry.registerFluid(QuantumContent.fluidSteam)
+    if (!FluidRegistry.isFluidRegistered("tritium"))
+      FluidRegistry.registerFluid(QuantumContent.getFluidTritium)
+    if (!FluidRegistry.isFluidRegistered("deuterium"))
+      FluidRegistry.registerFluid(QuantumContent.FLUID_DEUTERIUM)
     FluidRegistry.registerFluid(QuantumContent.getFluidToxicWaste)
     FluidRegistry.registerFluid(QuantumContent.FLUID_PLASMA)
 
