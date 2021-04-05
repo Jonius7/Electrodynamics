@@ -106,7 +106,7 @@ class TileThermometer extends ResonantTile(Material.piston) with SimpleComponent
 
   override def onRemove(block: Block, par6: Int)
   {
-    val stack: ItemStack = ItemBlockSaved.getItemStackWithNBT(getBlockType, world, x, y, z)
+    val stack: ItemStack = ItemBlockSaved.getItemStackWithNBT(getBlockType, world, x.toInt, y.toInt, z.toInt)
     InventoryUtility.dropItemStack(world, center, stack)
   }
 
@@ -123,7 +123,7 @@ class TileThermometer extends ResonantTile(Material.piston) with SimpleComponent
         }
         else
         {
-          detectedTemperature = GridThermal.getTemperature(position)
+          detectedTemperature = GridThermal.getTemperature(toVectorWorld)
         }
         if (detectedTemperature != previousDetectedTemperature || isProvidingPower != this.isOverThreshold)
         {

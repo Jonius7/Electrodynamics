@@ -90,7 +90,7 @@ class TileGlassJar extends ResonantTile(Material.wood) with TPacketReceiver with
 
   override def onRemove(block: Block, par6: Int)
   {
-    val stack: ItemStack = ItemBlockSaved.getItemStackWithNBT(block, world, x, y, z)
+    val stack: ItemStack = ItemBlockSaved.getItemStackWithNBT(block, world, x.toInt, y.toInt, z.toInt)
     InventoryUtility.dropItemStack(world, center, stack)
   }
 

@@ -64,7 +64,7 @@ class TilePlasmaHeater extends ResonantTile(Material.iron) with TBlockNodeProvid
     }
     if (ticks % 80 == 0)
     {
-      world.markBlockForUpdate(x, y, z)
+      world.markBlockForUpdate(x.toInt, y.toInt, z.toInt)
     }
   }
 
@@ -191,7 +191,7 @@ class TilePlasmaHeater extends ResonantTile(Material.iron) with TBlockNodeProvid
 
   override def use(player: EntityPlayer, side: Int, hit: Vector3): Boolean =
   {
-    return FluidUtility.playerActivatedFluidItem(world, x, y, z, player, side)
+    return FluidUtility.playerActivatedFluidItem(world, x.toInt, y.toInt, z.toInt, player, side)
   }
 
 }

@@ -146,7 +146,7 @@ class TileBattery extends ResonantTile(Material.iron) with TIO with TBlockNodePr
     {
       energy.max = (TileBattery.getEnergyForTier(ItemBlockBattery.getTier(itemStack)))
       energy.value = itemStack.getItem.asInstanceOf[ItemBlockBattery].getEnergy(itemStack)
-      world.setBlockMetadataWithNotify(x, y, z, ItemBlockBattery.getTier(itemStack), 3)
+      world.setBlockMetadataWithNotify(x.toInt, y.toInt, z.toInt, ItemBlockBattery.getTier(itemStack), 3)
     }
   }
 
@@ -155,7 +155,7 @@ class TileBattery extends ResonantTile(Material.iron) with TIO with TBlockNodePr
     val ret = new ArrayList[ItemStack]
     val itemStack: ItemStack = new ItemStack(getBlockType, 1)
     val itemBlock: ItemBlockBattery = itemStack.getItem.asInstanceOf[ItemBlockBattery]
-    ItemBlockBattery.setTier(itemStack, world.getBlockMetadata(x, y, z).asInstanceOf[Byte])
+    ItemBlockBattery.setTier(itemStack, world.getBlockMetadata(x.toInt, y.toInt, z.toInt).asInstanceOf[Byte])
     itemBlock.setEnergy(itemStack, energy.value)
     ret.add(itemStack)
     return ret
@@ -201,7 +201,7 @@ class TileBattery extends ResonantTile(Material.iron) with TIO with TBlockNodePr
 
     for (check <- ForgeDirection.VALID_DIRECTIONS)
     {
-      if ((position + check).getTileEntity.isInstanceOf[TileBattery])
+      if ((toVectorWorld + check).getTileEntity.isInstanceOf[TileBattery])
       {
         disabledParts ++= partToDisable(check.ordinal)
         if (check == ForgeDirection.UP)
@@ -214,7 +214,7 @@ class TileBattery extends ResonantTile(Material.iron) with TIO with TBlockNodePr
           var connectionParts = Set.empty[String]
           val downDirs = ForgeDirection.VALID_DIRECTIONS.filter(_.offsetY == 0)
           downDirs.foreach(s => connectionParts ++= connectionPartToEnable(s.ordinal))
-          downDirs.filter(s => (position + s).getTileEntity.isInstanceOf[TileBattery]).foreach(s => connectionParts --= connectionPartToEnable(s.ordinal))
+          downDirs.filter(s => (toVectorWorld + s).getTileEntity.isInstanceOf[TileBattery]).foreach(s => connectionParts --= connectionPartToEnable(s.ordinal))
           enabledParts ++= connectionParts
         }
       }

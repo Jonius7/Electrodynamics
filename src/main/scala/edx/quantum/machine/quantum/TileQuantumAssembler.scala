@@ -59,7 +59,7 @@ class TileQuantumAssembler extends ResonantTile(Material.iron) with TInventory w
   {
     if (!world.isRemote)
     {
-      player.openGui(QuantumContent, 0, world, x, y, z)
+      player.openGui(QuantumContent, 0, world, x.toInt, y.toInt, z.toInt)
     }
     return true
   }
@@ -195,9 +195,9 @@ class TileQuantumAssembler extends ResonantTile(Material.iron) with TInventory w
   {
     if (this.getStackInSlot(6) != null)
     {
-      return new PacketTile(x, y, z, Array[Any](time, getStackInSlot(6)))
+      return new PacketTile(x.toInt, y.toInt, z.toInt, Array[Any](time, getStackInSlot(6)))
     }
-    return new PacketTile(x, y, z, Array[Any](time, -1, -1, -1))
+    return new PacketTile(x.toInt, y.toInt, z.toInt, Array[Any](time, -1, -1, -1))
   }
 
   override def readFromNBT(nbt: NBTTagCompound)

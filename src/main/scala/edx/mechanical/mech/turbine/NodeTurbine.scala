@@ -30,7 +30,7 @@ class NodeTurbine(parent: TileTurbine) extends NodeMechanical(parent)
    */
   override def radius(other: TNodeMechanical): Double =
   {
-    val deltaPos = other.asInstanceOf[NodeMechanical].position - position
+    val deltaPos = other.asInstanceOf[NodeMechanical].toVectorWorld - toVectorWorld
 
     if (deltaPos.normalize.toForgeDirection == parent.getDirection)
       return super.radius(other)

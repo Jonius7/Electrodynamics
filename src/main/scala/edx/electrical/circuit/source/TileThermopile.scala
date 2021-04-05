@@ -42,7 +42,7 @@ class TileThermopile extends ResonantTile(Material.rock) with TBlockNodeProvider
 
       for (dir <- ForgeDirection.VALID_DIRECTIONS)
       {
-        val checkPos = position + dir
+        val checkPos = toVectorWorld + dir
         val block = checkPos.getBlock
 
         if (block == Blocks.water || block == Blocks.flowing_water)
@@ -77,7 +77,7 @@ class TileThermopile extends ResonantTile(Material.rock) with TBlockNodeProvider
         {
           for (dir <- ForgeDirection.VALID_DIRECTIONS)
           {
-            val checkPos = position.add(dir)
+            val checkPos = toVectorWorld.add(dir)
             val block = checkPos.getBlock(worldObj)
 
             if (block == Blocks.water || block == Blocks.flowing_water)

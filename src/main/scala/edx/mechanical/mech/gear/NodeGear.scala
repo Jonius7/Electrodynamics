@@ -149,7 +149,7 @@ class NodeGear(parent: PartGear) extends NodeMechanical(parent: PartGear)
         }
 
         //It's not a gear. It might be be another tile node
-        val sourceTile = position.add(from).getTileEntity(world)
+        val sourceTile = toVectorWorld.add(from).getTileEntity(world)
 
         if (sourceTile.isInstanceOf[INodeProvider])
         {
@@ -189,7 +189,7 @@ class NodeGear(parent: PartGear) extends NodeMechanical(parent: PartGear)
                 val checkPart = otherParent.asInstanceOf[PartGear].tile.partMap(gear.placementSide.ordinal)
                 if (checkPart.isInstanceOf[PartGear])
                 {
-                  val requiredDirection = checkPart.asInstanceOf[PartGear].getPosition.subtract(position).toForgeDirection
+                  val requiredDirection = checkPart.asInstanceOf[PartGear].getPosition.subtract(toVectorWorld).toForgeDirection
                   return checkPart.asInstanceOf[PartGear].isCenterMultiBlock && otherParent.asInstanceOf[PartGear].placementSide == requiredDirection
                 }
               }
@@ -219,7 +219,7 @@ class NodeGear(parent: PartGear) extends NodeMechanical(parent: PartGear)
           }
 
           //Check for gear outside this block placed on the same plane
-          val otherTile = other.position.getTileEntity
+          val otherTile = other.toVectorWorld.getTileEntity
 
           if (otherTile.isInstanceOf[TileMultipart])
           {
@@ -227,7 +227,7 @@ class NodeGear(parent: PartGear) extends NodeMechanical(parent: PartGear)
             {
               //We found another gear, but check if we are connecting to the center spaces of the gear
               //If this is a multiblock, "otherTile" would be the center of that gear, not the adjacent
-              val adjacentTile = position.add(from).getTileEntity
+              val adjacentTile = toVectorWorld.add(from).getTileEntity
 
               if (adjacentTile.isInstanceOf[TileMultipart])
               {
@@ -254,7 +254,7 @@ class NodeGear(parent: PartGear) extends NodeMechanical(parent: PartGear)
 
   override def radius(other: TNodeMechanical): Double =
   {
-    val deltaPos = other.asInstanceOf[NodeMechanical].position - position
+    val deltaPos = other.asInstanceOf[NodeMechanical].toVectorWorld - toVectorWorld
     val caseX = gear.placementSide.offsetX != 0 && deltaPos.y == 0 && deltaPos.z == 0
     val caseY = gear.placementSide.offsetY != 0 && deltaPos.x == 0 && deltaPos.z == 0
     val caseZ = gear.placementSide.offsetZ != 0 && deltaPos.x == 0 && deltaPos.y == 0

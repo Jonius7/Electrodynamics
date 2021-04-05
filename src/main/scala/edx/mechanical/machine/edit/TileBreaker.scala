@@ -78,8 +78,8 @@ class TileBreaker extends ResonantTile(Material.iron) with TRotatable with IPack
     if (isIndirectlyPowered)
     {
       val dir: ForgeDirection = getDirection
-      val check: Vector3 = position.add(dir)
-      val put: VectorWorld = position.add(dir.getOpposite)
+      val check: Vector3 = toVectorWorld.add(dir)
+      val put: VectorWorld = toVectorWorld.add(dir.getOpposite)
       val block: Block = check.getBlock(world)
       if (block != null)
       {
@@ -121,7 +121,7 @@ class TileBreaker extends ResonantTile(Material.iron) with TRotatable with IPack
 
   @SideOnly(Side.CLIENT) override def getIcon(access: IBlockAccess, side: Int): IIcon =
   {
-    val meta: Int = access.getBlockMetadata(x, y, z)
+    val meta: Int = access.getBlockMetadata(x.toInt, y.toInt, z.toInt)
     if (side == meta)
     {
       return TileBreaker.iconFront

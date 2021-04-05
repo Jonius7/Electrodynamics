@@ -186,7 +186,7 @@ class TileHotPlate extends ResonantTile(Material.iron) with TInventory with TPac
    */
   override def getIcon(access: IBlockAccess, side: Int): IIcon =
   {
-    return if (access.getBlockMetadata(x, y, z) == 1) ResonantBlock.icon.get("electricHotPlate") else (if (canRun) ResonantBlock.icon.get("hotPlate_on") else ResonantBlock.icon.get(getTextureName))
+    return if (access.getBlockMetadata(x.toInt, y.toInt, z.toInt) == 1) ResonantBlock.icon.get("electricHotPlate") else (if (canRun) ResonantBlock.icon.get("hotPlate_on") else ResonantBlock.icon.get(getTextureName))
   }
 
   @SideOnly(Side.CLIENT)

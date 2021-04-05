@@ -30,13 +30,13 @@ class TileSiren extends ResonantTile(Material.wood) with TBlockNodeProvider
     {
       if (world != null)
       {
-        val metadata: Int = world.getBlockMetadata(x, y, z)
-        if (world.getBlockPowerInput(x, y, z) > 0)
+        val metadata: Int = world.getBlockMetadata(x.toInt, y.toInt, z.toInt)
+        if (world.getBlockPowerInput(x.toInt, y.toInt, z.toInt) > 0)
         {
           var volume: Float = 0.5f
           for (i <- 0 to 6)
           {
-            val check: Vector3 = position.add(ForgeDirection.getOrientation(i))
+            val check: Vector3 = toVectorWorld.add(ForgeDirection.getOrientation(i))
             if (check.getBlock(world) == getBlockType)
             {
               volume *= 1.5f
@@ -56,7 +56,7 @@ class TileSiren extends ResonantTile(Material.wood) with TBlockNodeProvider
 
   override def configure(player: EntityPlayer, side: Int, hit: Vector3): Boolean =
   {
-    var metadata: Int = world.getBlockMetadata(x, y, z)
+    var metadata: Int = world.getBlockMetadata(x.toInt, y.toInt, z.toInt)
     if (player.isSneaking)
     {
       metadata -= 1
@@ -66,7 +66,7 @@ class TileSiren extends ResonantTile(Material.wood) with TBlockNodeProvider
       metadata += 1
     }
     metadata = Math.max(metadata % 16, 0)
-    world.setBlockMetadataWithNotify(x, y, z, metadata, 2)
+    world.setBlockMetadataWithNotify(x.toInt, y.toInt, z.toInt, metadata, 2)
     return true
   }
 }

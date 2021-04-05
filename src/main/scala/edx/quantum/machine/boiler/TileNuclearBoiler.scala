@@ -171,8 +171,8 @@ class TileNuclearBoiler extends ResonantTile(Material.iron) with TInventory with
 
   def read(data: ByteBuf, player: EntityPlayer, `type`: PacketType)
   {
-    this.waterTank.setFluid(new FluidStack(QuantumContent.fluidStackWater.fluidID, data.readInt))
-    this.gasTank.setFluid(new FluidStack(QuantumContent.fluidStackUraniumHexaflouride.fluidID, data.readInt))
+    this.waterTank.setFluid(new FluidStack(QuantumContent.fluidStackWater.getFluidID, data.readInt))
+    this.gasTank.setFluid(new FluidStack(QuantumContent.fluidStackUraniumHexaflouride.getFluidID, data.readInt))
     this.timer = data.readInt
   }
 
@@ -183,7 +183,7 @@ class TileNuclearBoiler extends ResonantTile(Material.iron) with TInventory with
 
   override def getDescPacket: PacketTile =
   {
-    return new PacketTile(x, y, z, Array[Any](this.timer, QuantumContent.getFluidAmount(this.waterTank.getFluid), QuantumContent.getFluidAmount(this.gasTank.getFluid)))
+    return new PacketTile(x.toInt, y.toInt, z.toInt, Array[Any](this.timer, QuantumContent.getFluidAmount(this.waterTank.getFluid), QuantumContent.getFluidAmount(this.gasTank.getFluid)))
   }
 
   override def use(player: EntityPlayer, side: Int, hit: Vector3): Boolean =
@@ -242,12 +242,12 @@ class TileNuclearBoiler extends ResonantTile(Material.iron) with TInventory with
 
   def canFill(from: ForgeDirection, fluid: Fluid): Boolean =
   {
-    return QuantumContent.fluidStackWater.fluidID == fluid.getID
+    return QuantumContent.fluidStackWater.getFluidID == fluid.getID
   }
 
   def canDrain(from: ForgeDirection, fluid: Fluid): Boolean =
   {
-    return QuantumContent.fluidStackUraniumHexaflouride.fluidID == fluid.getID
+    return QuantumContent.fluidStackUraniumHexaflouride.getFluidID == fluid.getID
   }
 
   def getTankInfo(from: ForgeDirection): Array[FluidTankInfo] =

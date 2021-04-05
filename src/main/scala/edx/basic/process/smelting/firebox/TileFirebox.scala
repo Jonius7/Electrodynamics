@@ -65,7 +65,7 @@ class TileFirebox extends ResonantTile(Material.rock) with IFluidHandler with TI
     {
       val drainFluid = tank.drain(FluidContainerRegistry.BUCKET_VOLUME, false)
 
-      if (drainFluid != null && drainFluid.amount == FluidContainerRegistry.BUCKET_VOLUME && drainFluid.fluidID == FluidRegistry.LAVA.getID)
+      if (drainFluid != null && drainFluid.amount == FluidContainerRegistry.BUCKET_VOLUME && drainFluid.getFluidID == FluidRegistry.LAVA.getID)
       {
         if (burnTime == 0)
         {
@@ -97,7 +97,7 @@ class TileFirebox extends ResonantTile(Material.rock) with IFluidHandler with TI
 
       if (burnTime > 0)
       {
-        if (block.isAir(world, x, y + 1, z))
+        if (block.isAir(world, x.toInt, y.toInt + 1, z.toInt))
         {
           worldObj.setBlock(xCoord, yCoord + 1, zCoord, Blocks.fire)
         }
@@ -114,7 +114,7 @@ class TileFirebox extends ResonantTile(Material.rock) with IFluidHandler with TI
           {
             if (FluidRegistry.getFluid("steam") != null)
             {
-              MinecraftForge.EVENT_BUS.post(new BoilEvent(worldObj, position.add(0, 1, 0), new FluidStack(FluidRegistry.WATER, volume), new FluidStack(FluidRegistry.getFluid("steam"), volume), 2, false))
+              MinecraftForge.EVENT_BUS.post(new BoilEvent(worldObj, toVectorWorld.add(0, 1, 0), new FluidStack(FluidRegistry.WATER, volume), new FluidStack(FluidRegistry.getFluid("steam"), volume), 2, false))
               boiledVolume += volume
             }
             if (boiledVolume >= FluidContainerRegistry.BUCKET_VOLUME)
@@ -192,7 +192,7 @@ class TileFirebox extends ResonantTile(Material.rock) with IFluidHandler with TI
 
   def getMeltIronEnergy(volume: Float): Double =
   {
-    val temperatureChange: Float = 1811 - ThermalPhysics.getDefaultTemperature(position)
+    val temperatureChange: Float = 1811 - ThermalPhysics.getDefaultTemperature(toVectorWorld)
     val mass: Float = ThermalPhysics.getMass(volume, 7.9f)
     return ThermalPhysics.getEnergyForTemperatureChange(mass, 450, temperatureChange) + ThermalPhysics.getEnergyForStateChange(mass, 272000)
   }
@@ -307,7 +307,7 @@ class TileFirebox extends ResonantTile(Material.rock) with IFluidHandler with TI
 
   override def use(player: EntityPlayer, side: Int, hit: Vector3): Boolean =
   {
-    if (FluidUtility.playerActivatedFluidItem(world, x, y, z, player, side))
+    if (FluidUtility.playerActivatedFluidItem(world, x.toInt, y.toInt, z.toInt, player, side))
     {
       return true
     }

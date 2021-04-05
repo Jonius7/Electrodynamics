@@ -22,6 +22,9 @@ apply plugin: 'maven-publish'
 
 ext.buildProps = file "build.properties"
 
+project.sourceCompatibility = '1.8'
+project.targetCompatibility = '1.8'
+
 buildProps.withReader {
     def prop = new Properties()
     prop.load(it)
@@ -29,17 +32,12 @@ buildProps.withReader {
 }
 
 version = "${config.version.mod.major}.${config.version.mod.minor}.${config.version.mod.revis}"
+group = "dev.calclavia.electrodynamics"
+archivesBaseName = "electrodynamics"
 
-if (System.getenv("TEAMCITY_BUILDCONF_NAME")?.equalsIgnoreCase("Production")) {
-    group = "com.calclavia.electrodynamics"
-    archivesBaseName = System.getenv("TEAMCITY_PROJECT_NAME")?.replaceAll(" ", "-")
-} else {
-    group = "dev.calclavia.electrodynamics"
-    archivesBaseName = System.getenv("TEAMCITY_PROJECT_NAME")?.replaceAll(" ", "-") + "-" + System.getenv("TEAMCITY_BUILDCONF_NAME")
-}
 
 minecraft {
-    version = "${config.version.minecraft}-${config.version.forge}"
+    version = "${config.version.minecraft}-${config.version.forge}-${config.version.minecraft}"
 
     replaceIn "References.scala"
     replace "@MAJOR@", config.version.mod.major
@@ -74,47 +72,9 @@ task copyBuildXml(type: Copy) {
     into 'output'
 }
 
-/**
- * Generates a TeamCity XML changelog via the REST API.
- */
-task("createChangelog").doLast {
-
-    def teamCityURL = "http://ci.calclavia.com/"
-
-    /**
-     * Create a new file
-     */
-    def file = new FileOutputStream("output/changelog.xml")
-    def out = new BufferedOutputStream(file)
-
-    /**
-     * Grab the build first, parse the XML to find the changelog XML URL
-     */
-    def changesXML = new XmlSlurper().parse(teamCityURL + "guestAuth/app/rest/changes?locator=build:(id:" + teamcity["teamcity.build.id"] + ")")
-    def changes = changesXML.change
-
-    /**
-     * Add the XML definition header in the front of the file and remove all other occurrences of the XML header
-     */
-    out << ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><changes>")
-
-    println("createChangelog: Identified " + changes.size() + " changes to be written into the changelog.")
-
-    for (int i = 0; i < changes.size(); i++) {
-        /**
-         * Write each changelog XML into the URL
-         */
-        def changelogURL = teamCityURL + "guestAuth/app/rest/changes/id:" + changes[i].@id.text()
-        out << new URL(changelogURL).getText().replaceAll("<\\?xml version=\"1\\.0\" encoding=\"UTF-8\" standalone=\"yes\"\\?>", "")
-    }
-
-    out << "</changes>"
-
-    out.close()
-}
 
 jar {
-    dependsOn copyBuildXml, createChangelog
+    dependsOn copyBuildXml
     classifier = 'core'
     destinationDir = file 'output'
 }
@@ -144,12 +104,12 @@ publishing {
 
 repositories {
     maven {
-        name "Calclavia Maven"
-        url "http://calclavia.com/maven"
+        name "tilera Maven"
+        url "https://data.tilera.xyz/maven"
     }
     maven {
         name = "forge"
-        url = "http://files.minecraftforge.net/maven"
+        url = "https://files.minecraftforge.net/maven"
     }
     maven {
         name "Mobius Repo"
@@ -157,13 +117,13 @@ repositories {
     }
     maven {
         name "chickenbones"
-        url "http://chickenbones.net/maven"
+        url "https://chickenbones.net/maven"
     }
-    maven { 
+    maven {
         name 'OC Maven'
-        url = "http://maven.cil.li/" 
+        url = "https://maven.cil.li/"
     }
-	
+
     mavenCentral()
     maven {
         name = "ic2"
@@ -172,22 +132,15 @@ repositories {
 }
 
 dependencies {
-	if (System.getenv("TEAMCITY_BUILDCONF_NAME") == "Development")
-	{
-		compile group: 'dev.calclavia.resonantengine', name: 'resonant-engine', version: "${config.version.resonantengine}", classifier: "dev"
-	}
-	else
-	{
-		compile group: 'com.calclavia.resonantengine', name: 'resonant-engine', version: "${config.version.resonantengine}", classifier: "dev"
-	}
-	
+
+    compile group: 'resonant', name: 'Resonant-Engine', version: "${config.version.resonantengine}", classifier: "dev"
     testCompile 'junit:junit:4.11'
     testCompile 'jmock:jmock:1.1.0'
-    compile "li.cil.oc:OpenComputers:MC1.7.10-1.4.0.+:api"
+    compile "li.cil.oc:OpenComputers:MC1.7.10-1.7.5.1356:api"
     compile "codechicken:CodeChickenLib:${config.version.minecraft}-${config.version.cclib}:dev"
     compile "codechicken:ForgeMultipart:${config.version.minecraft}-${config.version.fmp}:dev"
     compile "codechicken:CodeChickenCore:${config.version.minecraft}-${config.version.cccore}:dev"
     compile "codechicken:NotEnoughItems:${config.version.minecraft}-${config.version.nei}:dev"
-    compile "mcp.mobius.waila:Waila:1.5.6_dev1_1.7.10"
+    compile "mcp.mobius.waila:Waila:1.5.8_dev3_1.7.10"
     compile "net.industrial-craft:industrialcraft-2:2.2.654-experimental:dev"
 }

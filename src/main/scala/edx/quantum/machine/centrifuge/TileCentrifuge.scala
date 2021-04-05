@@ -58,7 +58,7 @@ class TileCentrifuge extends ResonantTile(Material.iron) with TInventory with TB
         for (i <- 0 to 6)
         {
           val direction: ForgeDirection = ForgeDirection.getOrientation(i)
-          val tileEntity: TileEntity = position.add(direction).getTileEntity(world)
+          val tileEntity: TileEntity = toVectorWorld.add(direction).getTileEntity(world)
           if (tileEntity.isInstanceOf[IFluidHandler] && tileEntity.getClass != this.getClass)
           {
             val fluidHandler: IFluidHandler = (tileEntity.asInstanceOf[IFluidHandler])
@@ -159,13 +159,13 @@ class TileCentrifuge extends ResonantTile(Material.iron) with TInventory with TB
   def read(data: ByteBuf, player: EntityPlayer, `type`: PacketType)
   {
     this.timer = data.readInt
-    this.gasTank.setFluid(new FluidStack(QuantumContent.fluidStackUraniumHexaflouride.fluidID, data.readInt))
+    this.gasTank.setFluid(new FluidStack(QuantumContent.fluidStackUraniumHexaflouride.getFluidID, data.readInt))
 
   }
 
   override def getDescPacket: PacketTile =
   {
-    return new PacketTile(x, y, z, Array[Any](this.timer, QuantumContent.getFluidAmount(this.gasTank.getFluid)))
+    return new PacketTile(x.toInt, y.toInt, z.toInt, Array[Any](this.timer, QuantumContent.getFluidAmount(this.gasTank.getFluid)))
   }
 
   /**
@@ -218,7 +218,7 @@ class TileCentrifuge extends ResonantTile(Material.iron) with TInventory with TB
 
   def canFill(from: ForgeDirection, fluid: Fluid): Boolean =
   {
-    return QuantumContent.fluidStackUraniumHexaflouride.fluidID == fluid.getID
+    return QuantumContent.fluidStackUraniumHexaflouride.getFluidID == fluid.getID
   }
 
   def canDrain(from: ForgeDirection, fluid: Fluid): Boolean =

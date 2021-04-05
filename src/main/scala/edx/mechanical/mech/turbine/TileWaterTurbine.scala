@@ -37,7 +37,7 @@ class TileWaterTurbine extends TileTurbine
     {
       if (other.isInstanceOf[NodeMechanical] && !other.isInstanceOf[TileTurbine])
       {
-        val sourceTile: TileEntity = position.add(from).getTileEntity
+        val sourceTile: TileEntity = toVectorWorld.add(from).getTileEntity
 
         if (sourceTile.isInstanceOf[INodeProvider])
         {
@@ -69,7 +69,7 @@ class TileWaterTurbine extends TileTurbine
         val metadata = worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord)
         val isWater = blockAbove == Blocks.water || blockAbove == Blocks.flowing_water
 
-        if (isWater && metadata == 0 && blockBelow.isReplaceable(world, x, y - 1, z))
+        if (isWater && metadata == 0 && blockBelow.isReplaceable(world, x.toInt, y.toInt - 1, z.toInt))
         {
           powerTicks = 20
           worldObj.setBlockToAir(xCoord, yCoord + 1, zCoord)
@@ -86,13 +86,13 @@ class TileWaterTurbine extends TileTurbine
       {
         if (dir != currentDir && dir != currentDir.getOpposite)
         {
-          val check: Vector3 = position.add(dir)
+          val check: Vector3 = toVectorWorld.add(dir)
           val block = worldObj.getBlock(check.xi, check.yi, check.zi)
           val metadata: Int = worldObj.getBlockMetadata(check.xi, check.yi, check.zi)
 
           if (block == Blocks.water || block == Blocks.flowing_water)
           {
-            val m = ReflectionHelper.findMethod(classOf[BlockLiquid], null, Array[String]("getFlowVector", "func_72202_i"), classOf[IBlockAccess], Integer.TYPE, Integer.TYPE, Integer.TYPE)
+            val m = ReflectionHelper.findMethod(classOf[BlockLiquid], null, Array[String]("getFlowVector", "func_149800_f"), classOf[IBlockAccess], Integer.TYPE, Integer.TYPE, Integer.TYPE)
             val vector = new Vector3(m.invoke(Blocks.water, worldObj, check.xi: Integer, check.yi: Integer, check.zi: Integer).asInstanceOf[Vec3])
             val invert = (currentDir.offsetZ > 0 && vector.x < 0) || (currentDir.offsetZ < 0 && vector.x > 0) || (currentDir.offsetX > 0 && vector.z > 0) || (currentDir.offsetX < 0 && vector.z < 0)
 

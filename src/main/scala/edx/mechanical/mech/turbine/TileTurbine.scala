@@ -93,7 +93,7 @@ class TileTurbine extends TileMechanical(Material.wood) with IMultiBlockStructur
     return vectors
   }
 
-  override def getPosition: Vector3 = position
+  override def getPosition: Vector3 = toVectorWorld
 
   def onMultiBlockChanged()
   {

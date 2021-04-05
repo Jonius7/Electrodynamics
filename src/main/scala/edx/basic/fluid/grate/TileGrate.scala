@@ -92,7 +92,7 @@ class TileGrate extends TileFluidProvider(Material.rock) with TRotatable
             if (gratePath == null)
             {
               gratePath = new GratePathfinder(true)
-              gratePath.startFill(position, fluidNode.getFluid.getFluid.getID)
+              gratePath.startFill(toVectorWorld, fluidNode.getFluid.getFluid.getID)
             }
             val filledInWorld = gratePath.tryFill(fluidNode.getFluidAmount, blockEffect)
             fluidNode.drain(filledInWorld, true)
@@ -107,7 +107,7 @@ class TileGrate extends TileFluidProvider(Material.rock) with TRotatable
             if (gratePath == null)
             {
               gratePath = new GratePathfinder(false)
-              if (!gratePath.startDrain(position))
+              if (!gratePath.startDrain(toVectorWorld))
               {
                 resetPath()
               }

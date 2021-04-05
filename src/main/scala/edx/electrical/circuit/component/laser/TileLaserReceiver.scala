@@ -59,8 +59,8 @@ class TileLaserReceiver extends ResonantTile(Material.rock) with ILaserHandler w
 
   override def onPlaced(entityLiving: EntityLivingBase, itemStack: ItemStack)
   {
-    val l = BlockPistonBase.determineOrientation(world, x, y, z, entityLiving)
-    world.setBlockMetadataWithNotify(x, y, z, l, 2)
+    val l = BlockPistonBase.determineOrientation(world, x.toInt, y.toInt, z.toInt, entityLiving)
+    world.setBlockMetadataWithNotify(x.toInt, y.toInt, z.toInt, l, 2)
   }
 
   @SideOnly(Side.CLIENT)

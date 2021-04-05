@@ -370,12 +370,12 @@ class TileImprinter extends ResonantTile(Material.circuits) with ISidedInventory
                 InventoryUtility.dropItemStack(world, new Vector3(player), checkStack, 0)
                 inventory(slotID) = null
               }
-              world.markBlockForUpdate(x, y, z)
+              world.markBlockForUpdate(x.toInt, y.toInt, z.toInt)
               return true
             }
           }
         }
-        world.markBlockForUpdate(x, y, z)
+        world.markBlockForUpdate(x.toInt, y.toInt, z.toInt)
       }
       return true
     }
@@ -398,7 +398,7 @@ class TileImprinter extends ResonantTile(Material.circuits) with ISidedInventory
 
   override def onNeighborChanged(block: Block)
   {
-    val b: Block = (position + ForgeDirection.getOrientation(1)).getBlock
+    val b: Block = (toVectorWorld + ForgeDirection.getOrientation(1)).getBlock
     if (Blocks.piston_head eq b)
     {
       onInventoryChanged

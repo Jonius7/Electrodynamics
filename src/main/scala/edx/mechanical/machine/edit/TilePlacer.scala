@@ -108,7 +108,7 @@ class TilePlacer extends ResonantTile(Material.rock) with TInventory with TRotat
   def doWork
   {
     val side: Int = 0
-    val placePos: Vector3 = position.add(getDirection)
+    val placePos: Vector3 = toVectorWorld.add(getDirection)
     val placeStack: ItemStack = getStackInSlot(0)
     if (InventoryUtility.placeItemBlock(world, placePos.xi, placePos.yi, placePos.zi, placeStack, side))
     {
@@ -172,7 +172,7 @@ class TilePlacer extends ResonantTile(Material.rock) with TInventory with TRotat
 
   @SideOnly(Side.CLIENT) override def getIcon(access: IBlockAccess, side: Int): IIcon =
   {
-    val meta: Int = access.getBlockMetadata(x, y, z)
+    val meta: Int = access.getBlockMetadata(x.toInt, y.toInt, z.toInt)
     if (side == meta)
     {
       return TilePlacer.iconFront

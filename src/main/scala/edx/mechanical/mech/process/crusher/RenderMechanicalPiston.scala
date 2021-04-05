@@ -44,7 +44,7 @@ import resonantengine.lib.render.RenderUtility
     if (tile.getWorldObj != null)
     {
       val dir: ForgeDirection = tile.getDirection
-      if (tile.world.isAirBlock(tile.x + dir.offsetX, tile.y + dir.offsetY, tile.z + dir.offsetZ))
+      if (tile.world.isAirBlock((tile.x + dir.offsetX).toInt, (tile.y + dir.offsetY).toInt, (tile.z + dir.offsetZ).toInt))
       {
         GL11.glTranslated(0, 0, (0.4 * Math.sin(angle)) - 0.5)
       }

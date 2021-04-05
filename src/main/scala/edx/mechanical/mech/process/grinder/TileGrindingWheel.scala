@@ -62,7 +62,7 @@ class TileGrindingWheel extends TileMechanical(Material.rock)
 
       if (grindingItem != null)
       {
-        if (TileGrindingWheel.grindingTimer.containsKey(grindingItem) && !grindingItem.isDead && position.add(0.5).distance(new Vector3(grindingItem)) < 1)
+        if (TileGrindingWheel.grindingTimer.containsKey(grindingItem) && !grindingItem.isDead && toVectorWorld.add(0.5).distance(new Vector3(grindingItem)) < 1)
         {
           val timeLeft: Int = TileGrindingWheel.grindingTimer.decrease(grindingItem)
           if (timeLeft <= 0)
