@@ -30,7 +30,6 @@ import scala.collection.convert.wrapAll._
 
 object TileGutter
 {
-  @SideOnly(Side.CLIENT)
   private val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "gutter.png")
 }
 

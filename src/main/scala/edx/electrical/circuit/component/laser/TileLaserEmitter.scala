@@ -30,7 +30,6 @@ import scala.collection.convert.wrapAll._
  */
 object TileLaserEmitter
 {
-  @SideOnly(Side.CLIENT)
   val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "laserEmitter.png")
 }
 

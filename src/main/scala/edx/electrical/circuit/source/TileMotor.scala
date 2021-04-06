@@ -24,7 +24,6 @@ import resonantengine.prefab.block.impl.{TBlockNodeProvider, TRotatable}
  */
 object TileMotor
 {
-  @SideOnly(Side.CLIENT)
   val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "motor.png")
 
   val fieldStrength = 1

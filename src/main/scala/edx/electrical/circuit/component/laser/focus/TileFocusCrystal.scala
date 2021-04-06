@@ -23,7 +23,7 @@ import resonantengine.lib.transform.vector.Vector3
  */
 object TileFocusCrystal
 {
-  @SideOnly(Side.CLIENT) val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "focusCrystal.png")
+  val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "focusCrystal.png")
 }
 
 class TileFocusCrystal extends TileFocus(Material.rock) with ILaserHandler with IFocus

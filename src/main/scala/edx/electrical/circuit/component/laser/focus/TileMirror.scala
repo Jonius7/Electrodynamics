@@ -20,7 +20,7 @@ import scala.collection.convert.wrapAsJava._
 
 object TileMirror
 {
-  @SideOnly(Side.CLIENT) val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "mirror.png")
+  val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "mirror.png")
 }
 
 /**

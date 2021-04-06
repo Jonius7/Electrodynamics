@@ -25,7 +25,7 @@ import scala.collection.convert.wrapAll._
  */
 object TileLaserReceiver
 {
-  @SideOnly(Side.CLIENT) val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "laserReceiver.png")
+  val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "laserReceiver.png")
 }
 
 class TileLaserReceiver extends ResonantTile(Material.rock) with ILaserHandler with TBlockNodeProvider with TRotatable
