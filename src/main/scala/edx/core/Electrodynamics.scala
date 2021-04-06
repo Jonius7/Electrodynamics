@@ -25,9 +25,9 @@ import resonantengine.lib.mod.loadable.LoadableHandler
 object Electrodynamics
 {
 
-  final val id = Reference.id
-  final val name = Reference.name
-  final val version = Reference.version
+  final val id = "EDX"
+  final val name = "Electrodynamics"
+  final val version = "@MAJOR@.@MINOR@.@REVIS@"
 
   /** Packets */
   val packetHandler = ResonantEngine.packetHandler

@@ -4,17 +4,12 @@ import java.util.logging.Logger;
 
 public class Reference {
 
-    public static final String id = "EDX";
+    public static final String id = Electrodynamics.id();
 
     /** The official name of the mod */
-    public static final String name = "Electrodynamics";
+    public static final String name = Electrodynamics.name();
     public static final Logger logger = Logger.getLogger(Reference.name);
-
-    public static final String majorVersion = "@MAJOR@";
-    public static final String minorVersion = "@MINOR@";
-    public static final String revisionVersion = "@REVIS@";
-    public static final String build = "@BUILD@";
-    public static final String version = majorVersion + "." + minorVersion + "." + revisionVersion;
+    
     /**
      * Directory Information
      */

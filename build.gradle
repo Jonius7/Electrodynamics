@@ -39,11 +39,10 @@ archivesBaseName = "electrodynamics"
 minecraft {
     version = "${config.version.minecraft}-${config.version.forge}-${config.version.minecraft}"
 
-    replaceIn "References.scala"
+    replaceIn "Electrodynamics.scala"
     replace "@MAJOR@", config.version.mod.major
     replace "@MINOR@", config.version.mod.minor
     replace "@REVIS@", config.version.mod.revis
-    replace "@BUILD@", System.getenv("BUILD_NUMBER")
 }
 
 if (System.getenv("BUILD_NUMBER") != null)
