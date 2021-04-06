@@ -20,10 +20,15 @@ import resonantengine.lib.mod.loadable.LoadableHandler
 /** The core module of Resonant Induction
   *
   * @author Calclavia */
-@Mod(modid = Reference.id, name = Reference.name, version = Reference.version, modLanguage = "scala", dependencies = "required-after:ForgeMultipart@[1.0.0.244,);required-after:ResonantEngine;before:ThermalExpansion;before:Mekanism")
+@Mod(modid = Electrodynamics.id, name = Electrodynamics.name, version = Electrodynamics.version, modLanguage = "scala", dependencies = "required-after:ForgeMultipart@[1.0.0.244,);required-after:ResonantEngine;before:ThermalExpansion;before:Mekanism")
 @ModstatInfo(prefix = "edx")
 object Electrodynamics
 {
+
+  final val id = Reference.id
+  final val name = Reference.name
+  final val version = Reference.version
+
   /** Packets */
   val packetHandler = ResonantEngine.packetHandler
   val loadables = new LoadableHandler
