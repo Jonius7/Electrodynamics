@@ -3,13 +3,13 @@ package edx.electrical.circuit.component.laser
 import cpw.mods.fml.client.FMLClientHandler
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import edx.core.Reference
+import edx.electrical.Models
 import net.minecraft.block.BlockPistonBase
 import net.minecraft.block.material.Material
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import net.minecraft.util.{MovingObjectPosition, ResourceLocation}
 import net.minecraft.world.IBlockAccess
-import net.minecraftforge.client.model.AdvancedModelLoader
 import net.minecraftforge.common.util.ForgeDirection
 import org.lwjgl.opengl.GL11
 import org.lwjgl.opengl.GL11._
@@ -30,9 +30,6 @@ import scala.collection.convert.wrapAll._
  */
 object TileLaserEmitter
 {
-  @SideOnly(Side.CLIENT)
-  val model = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "laserEmitter.tcn"))
-
   @SideOnly(Side.CLIENT)
   val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "laserEmitter.png")
 }
@@ -99,7 +96,7 @@ class TileLaserEmitter extends ResonantTile(Material.iron) with ILaserHandler wi
       glRotatef(180, 1, 0, 0)
 
     FMLClientHandler.instance.getClient.renderEngine.bindTexture(TileLaserEmitter.texture)
-    TileLaserEmitter.model.renderAll()
+    Models.laseremitter.renderAll()
 
     RenderUtility.disableBlending()
     GL11.glPopMatrix()
@@ -114,7 +111,7 @@ class TileLaserEmitter extends ResonantTile(Material.iron) with ILaserHandler wi
     RenderUtility.enableBlending()
 
     FMLClientHandler.instance.getClient.renderEngine.bindTexture(TileLaserEmitter.texture)
-    TileLaserEmitter.model.renderAll()
+    Models.laseremitter.renderAll()
 
     RenderUtility.disableBlending()
 

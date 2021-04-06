@@ -4,13 +4,12 @@ import java.util.List
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import edx.core.{Reference, Settings}
+import edx.mechanical.Models
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.init.{Blocks, Items}
 import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.nbt.NBTTagCompound
-import net.minecraft.util.ResourceLocation
 import net.minecraft.world.biome.{BiomeGenBase, BiomeGenOcean, BiomeGenPlains}
-import net.minecraftforge.client.model.AdvancedModelLoader
 import net.minecraftforge.common.util.ForgeDirection
 import net.minecraftforge.fluids.{Fluid, FluidStack, FluidTank, FluidTankInfo}
 import org.lwjgl.opengl.GL11
@@ -23,18 +22,6 @@ import resonantengine.lib.wrapper.CollectionWrapper._
 import resonantengine.lib.wrapper.NBTWrapper._
 import resonantengine.prefab.block.itemblock.ItemBlockMetadata
 
-/**
- * The vertical wind turbine collects airflow.
- *
- * The horizontal wind turbine collects steam from steam power plants.
- *
- * @author Calclavia
- */
-object TileWindTurbine
-{
-  @SideOnly(Side.CLIENT)
-  val model = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "windTurbines.obj"))
-}
 
 class TileWindTurbine extends TileTurbine with IBoilHandler
 {
@@ -227,24 +214,24 @@ class TileWindTurbine extends TileTurbine with IBoilHandler
       if (tier == 2)
       {
         GL11.glTranslatef(0, -0.11f, 0)
-        TileWindTurbine.model.renderOnly("LargeMetalBlade")
-        TileWindTurbine.model.renderOnly("LargeMetalHub")
+        Models.wind.renderOnly("LargeMetalBlade")
+        Models.wind.renderOnly("LargeMetalHub")
       }
       else
       {
-        TileWindTurbine.model.renderOnly("LargeBladeArm")
+        Models.wind.renderOnly("LargeBladeArm")
         GL11.glScalef(1f, 2f, 1f)
         GL11.glTranslatef(0, -0.05f, 0)
-        TileWindTurbine.model.renderOnly("LargeHub")
+        Models.wind.renderOnly("LargeHub")
         RenderUtility.bind(Reference.blockTextureDirectory + "wool_colored_white.png")
-        TileWindTurbine.model.renderOnly("LargeBlade")
+        Models.wind.renderOnly("LargeBlade")
       }
     }
     else
     {
-      TileWindTurbine.model.renderOnly("SmallBlade")
+      Models.wind.renderOnly("SmallBlade")
       RenderUtility.bind(Reference.blockTextureDirectory + "log_oak.png")
-      TileWindTurbine.model.renderOnly("SmallHub")
+      Models.wind.renderOnly("SmallHub")
     }
   }
 }

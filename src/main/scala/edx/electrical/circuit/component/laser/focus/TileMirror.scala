@@ -3,6 +3,7 @@ package edx.electrical.circuit.component.laser.focus
 import cpw.mods.fml.client.FMLClientHandler
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import edx.core.{Electrodynamics, Reference}
+import edx.electrical.Models
 import edx.electrical.circuit.component.laser.{ILaserHandler, Laser}
 import net.minecraft.block.material.Material
 import net.minecraft.item.ItemStack
@@ -10,7 +11,6 @@ import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity
 import net.minecraft.network.{NetworkManager, Packet}
 import net.minecraft.util.{MovingObjectPosition, ResourceLocation}
-import net.minecraftforge.client.model.AdvancedModelLoader
 import net.minecraftforge.common.util.ForgeDirection
 import org.lwjgl.opengl.GL11._
 import resonantengine.lib.transform.rotation.Quaternion
@@ -20,7 +20,6 @@ import scala.collection.convert.wrapAsJava._
 
 object TileMirror
 {
-  @SideOnly(Side.CLIENT) val model = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "mirror.tcn"))
   @SideOnly(Side.CLIENT) val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "mirror.png")
 }
 
@@ -147,7 +146,7 @@ class TileMirror extends TileFocus(Material.glass) with ILaserHandler with IFocu
     glRotated(angle.yaw, 0, 1, 0)
     glRotated(angle.pitch, 1, 0, 0)
     glRotated(90, 1, 0, 0)
-    TileMirror.model.renderOnly("mirror", "mirrorBacking", "standConnector")
+    Models.mirror.renderOnly("mirror", "mirrorBacking", "standConnector")
 
     glPopMatrix()
   }
@@ -158,7 +157,7 @@ class TileMirror extends TileFocus(Material.glass) with ILaserHandler with IFocu
     glPushMatrix()
 
     FMLClientHandler.instance.getClient.renderEngine.bindTexture(TileMirror.texture)
-    TileMirror.model.renderAll()
+    Models.mirror.renderAll()
 
     glPopMatrix()
   }

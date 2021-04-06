@@ -1,14 +1,13 @@
 package edx.mechanical.mech.process.grinder
 
-import cpw.mods.fml.relauncher.{Side, SideOnly}
 import edx.core.{Electrodynamics, Reference}
+import edx.mechanical.Models
 import edx.mechanical.mech.TileMechanical
 import net.minecraft.block.material.Material
 import net.minecraft.entity.Entity
 import net.minecraft.entity.item.EntityItem
 import net.minecraft.item.{ItemBlock, ItemStack}
-import net.minecraft.util.{DamageSource, ResourceLocation}
-import net.minecraftforge.client.model.AdvancedModelLoader
+import net.minecraft.util.DamageSource
 import net.minecraftforge.common.util.ForgeDirection
 import org.lwjgl.opengl.GL11._
 import resonantengine.api.edx.recipe.{MachineRecipes, RecipeType}
@@ -30,8 +29,6 @@ object TileGrindingWheel
    */
   final val grindingTimer = new Timer[EntityItem]
 
-  @SideOnly(Side.CLIENT)
-  final val model = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "grinder.obj"))
 }
 
 class TileGrindingWheel extends TileMechanical(Material.rock)
@@ -203,9 +200,9 @@ class TileGrindingWheel extends TileMechanical(Material.rock)
     RenderUtility.rotateBlockBasedOnDirection(dir)
     glRotated(Math.toDegrees(mechanicalNode.angle), 0, 0, 1)
     RenderUtility.bind(Reference.blockTextureDirectory + "planks_oak.png")
-    TileGrindingWheel.model.renderAllExcept("teeth")
+    Models.grinder.renderAllExcept("teeth")
     RenderUtility.bind(Reference.blockTextureDirectory + "cobblestone.png")
-    TileGrindingWheel.model.renderOnly("teeth")
+    Models.grinder.renderOnly("teeth")
     glPopMatrix()
   }
 }

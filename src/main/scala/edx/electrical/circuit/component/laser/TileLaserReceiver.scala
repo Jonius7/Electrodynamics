@@ -3,12 +3,12 @@ package edx.electrical.circuit.component.laser
 import cpw.mods.fml.client.FMLClientHandler
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import edx.core.Reference
+import edx.electrical.Models
 import net.minecraft.block.BlockPistonBase
 import net.minecraft.block.material.Material
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import net.minecraft.util.{MovingObjectPosition, ResourceLocation}
-import net.minecraftforge.client.model.AdvancedModelLoader
 import net.minecraftforge.common.util.ForgeDirection
 import org.lwjgl.opengl.GL11._
 import resonantengine.lib.grid.energy.electric.NodeElectricComponent
@@ -25,7 +25,6 @@ import scala.collection.convert.wrapAll._
  */
 object TileLaserReceiver
 {
-  @SideOnly(Side.CLIENT) val model = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "laserReceiver.tcn"))
   @SideOnly(Side.CLIENT) val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "laserReceiver.png")
 }
 
@@ -88,7 +87,7 @@ class TileLaserReceiver extends ResonantTile(Material.rock) with ILaserHandler w
       glRotatef(180, 1, 0, 0)
 
     FMLClientHandler.instance.getClient.renderEngine.bindTexture(TileLaserReceiver.texture)
-    TileLaserReceiver.model.renderAll()
+    Models.laserreceiver.renderAll()
 
     RenderUtility.disableBlending()
 
@@ -104,7 +103,7 @@ class TileLaserReceiver extends ResonantTile(Material.rock) with ILaserHandler w
     RenderUtility.enableBlending()
 
     FMLClientHandler.instance.getClient.renderEngine.bindTexture(TileLaserReceiver.texture)
-    TileLaserReceiver.model.renderAll()
+    Models.laserreceiver.renderAll()
 
     RenderUtility.disableBlending()
 

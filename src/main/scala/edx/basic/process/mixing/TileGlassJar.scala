@@ -4,7 +4,7 @@ import java.awt.Color
 import java.util.ArrayList
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
-import edx.basic.BasicContent
+import edx.basic.{BasicContent, Models}
 import edx.core.Reference
 import edx.core.resource.alloy.{Alloy, AlloyUtility}
 import edx.core.resource.content.{ItemDust, ItemRefinedDust}
@@ -16,7 +16,6 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.ResourceLocation
 import net.minecraftforge.client.IItemRenderer.ItemRenderType
-import net.minecraftforge.client.model.AdvancedModelLoader
 import org.lwjgl.opengl.GL11
 import resonantengine.api.item.ISimpleItemRenderer
 import resonantengine.core.network.discriminator.PacketType
@@ -39,7 +38,6 @@ import resonantengine.prefab.network.{TPacketReceiver, TPacketSender}
  */
 object TileGlassJar
 {
-  val model = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "glassJar.tcn"))
   val dustMaterialTexture = new ResourceLocation(Reference.domain, Reference.blockTextureDirectory + "material_sand.png")
 }
 
@@ -175,7 +173,7 @@ class TileGlassJar extends ResonantTile(Material.wood) with TPacketReceiver with
     GL11.glScalef(1.6f, 1.6f, 1.6f)
     GL11.glColor4f(1, 1, 1, 1)
     RenderUtility.bind(Reference.domain, Reference.modelPath + "glassJar.png")
-    TileGlassJar.model.renderAll()
+    Models.glassjar.renderAll()
     RenderUtility.disableBlending()
   }
 

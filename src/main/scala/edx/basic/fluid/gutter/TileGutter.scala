@@ -3,6 +3,7 @@ package edx.basic.fluid.gutter
 import java.util.{ArrayList, List}
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
+import edx.basic.Models
 import edx.basic.fluid.tank.TileTank
 import edx.core.Reference
 import edx.core.prefab.node.{NodeFluid, NodeFluidPressure, TileFluidProvider}
@@ -14,7 +15,6 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.ResourceLocation
-import net.minecraftforge.client.model.AdvancedModelLoader
 import net.minecraftforge.common.util.ForgeDirection
 import net.minecraftforge.fluids._
 import org.lwjgl.opengl.GL11
@@ -30,8 +30,6 @@ import scala.collection.convert.wrapAll._
 
 object TileGutter
 {
-  @SideOnly(Side.CLIENT)
-  private val model = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "gutter.tcn"))
   @SideOnly(Side.CLIENT)
   private val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "gutter.png")
 }
@@ -232,11 +230,11 @@ class TileGutter extends TileFluidProvider(Material.rock)
         }
         if (!sides.mask(dir))
         {
-          TileGutter.model.renderOnly("left")
+          Models.gutter.renderOnly("left")
         }
         if (!sides.mask(dir) || !sides.mask(dir.getRotation(ForgeDirection.UP)))
         {
-          TileGutter.model.renderOnly("backCornerL")
+          Models.gutter.renderOnly("backCornerL")
         }
         GL11.glPopMatrix()
       }
@@ -244,7 +242,7 @@ class TileGutter extends TileFluidProvider(Material.rock)
 
     if (!sides.mask(ForgeDirection.DOWN))
     {
-      TileGutter.model.renderOnly("base")
+      Models.gutter.renderOnly("base")
     }
   }
 

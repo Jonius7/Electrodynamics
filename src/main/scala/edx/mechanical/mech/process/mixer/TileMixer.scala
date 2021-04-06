@@ -11,7 +11,6 @@ import net.minecraft.entity.Entity
 import net.minecraft.entity.item.EntityItem
 import net.minecraft.item.ItemStack
 import net.minecraft.util.{AxisAlignedBB, ResourceLocation}
-import net.minecraftforge.client.model.{AdvancedModelLoader, IModelCustom}
 import net.minecraftforge.fluids.IFluidBlock
 import org.lwjgl.opengl.GL11
 import org.lwjgl.opengl.GL11._
@@ -30,7 +29,6 @@ object TileMixer
 {
   final val PROCESS_TIME: Int = 12 * 20
   final val MIXER_ITEM_TIMER: Timer[EntityItem] = new Timer[EntityItem]
-  @SideOnly(Side.CLIENT) val MODEL: IModelCustom = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "mixer.tcn"))
   @SideOnly(Side.CLIENT) var TEXTURE: ResourceLocation = new ResourceLocation(Reference.domain, Reference.modelPath + "mixer.png")
 }
 

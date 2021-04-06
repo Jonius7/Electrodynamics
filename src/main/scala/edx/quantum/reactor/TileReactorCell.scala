@@ -5,7 +5,7 @@ import java.util.List
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import edx.core.{Electrodynamics, Reference}
-import edx.quantum.QuantumContent
+import edx.quantum.{Models, QuantumContent}
 import net.minecraft.block.Block
 import net.minecraft.block.material.Material
 import net.minecraft.entity.EntityLiving
@@ -16,7 +16,6 @@ import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.{AxisAlignedBB, ResourceLocation}
 import net.minecraft.world.World
-import net.minecraftforge.client.model.AdvancedModelLoader
 import net.minecraftforge.common.util.ForgeDirection
 import org.lwjgl.opengl.GL11
 import resonantengine.api.edx.machine.{IReactor, IReactorComponent}
@@ -42,9 +41,6 @@ object TileReactorCell
   final val specificHeatCapacity = 1000
   final val mass = ThermalPhysics.getMass(1000, 7)
 
-  final val modelTop = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "reactorCellTop.tcn"))
-  final val modelMiddle = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "reactorCellMiddle.tcn"))
-  final val modelBottom = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "reactorCellBottom.tcn"))
   final val textureTop = new ResourceLocation(Reference.domain, Reference.modelPath + "reactorCellTop.png")
   final val textureMiddle = new ResourceLocation(Reference.domain, Reference.modelPath + "reactorCellMiddle.png")
   final val textureBottom = new ResourceLocation(Reference.domain, Reference.modelPath + "reactorCellBottom.png")
@@ -345,14 +341,14 @@ class TileReactorCell extends TileInventory(Material.iron) with IMultiBlockStruc
     if (meta == 0)
     {
       RenderUtility.bind(TileReactorCell.textureBottom)
-      TileReactorCell.modelBottom.renderAll()
+      Models.cellBottom.renderAll()
     }
     else if (meta == 1)
     {
       RenderUtility.bind(TileReactorCell.textureMiddle)
       GL11.glTranslatef(0, 0.075f, 0)
       GL11.glScalef(1f, 1.15f, 1f)
-      TileReactorCell.modelMiddle.renderAll()
+      Models.cellMiddle.renderAll()
     }
     else
     {
@@ -370,11 +366,11 @@ class TileReactorCell extends TileInventory(Material.iron) with IMultiBlockStruc
 
       if (hasBelow)
       {
-        TileReactorCell.modelTop.renderAllExcept("BottomPad", "BaseDepth", "BaseWidth", "Base")
+        Models.cellTop.renderAllExcept("BottomPad", "BaseDepth", "BaseWidth", "Base")
       }
       else
       {
-        TileReactorCell.modelTop.renderAll()
+        Models.cellTop.renderAll()
       }
     }
     GL11.glPopMatrix()

@@ -4,15 +4,14 @@ import java.util.ArrayList
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import edx.core.Reference
+import edx.electrical.Models
 import io.netty.buffer.ByteBuf
 import net.minecraft.block.material.Material
 import net.minecraft.client.Minecraft
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
-import net.minecraft.util.ResourceLocation
 import net.minecraftforge.client.IItemRenderer.ItemRenderType
-import net.minecraftforge.client.model.AdvancedModelLoader
 import net.minecraftforge.common.util.ForgeDirection
 import org.lwjgl.opengl.GL11._
 import resonantengine.api.item.ISimpleItemRenderer
@@ -36,9 +35,6 @@ object TileBattery
 {
   /** Tiers: 0, 1, 2 */
   final val maxTier = 2
-
-  @SideOnly(Side.CLIENT)
-  val model = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "battery/battery.tcn"))
 
   /**
    * @param tier - 0, 1, 2
@@ -172,16 +168,16 @@ class TileBattery extends ResonantTile(Material.iron) with TIO with TBlockNodePr
     disabledParts ++= Set("coil1", "coil2", "coil3", "coil4", "coil5", "coil6", "coil7", "coil8")
     disabledParts ++= Set("coil1lit", "coil2lit", "coil3lit", "coil4lit", "coil5lit", "coil6lit", "coil7lit", "coil8lit")
     disabledParts ++= Set("frame1con", "frame2con", "frame3con", "frame4con")
-    TileBattery.model.renderAllExcept(disabledParts.toList: _*)
+    Models.battery.renderAllExcept(disabledParts.toList: _*)
 
     for (i <- 1 until 8)
     {
       if (i != 1 || !disabledParts.contains("coil1"))
       {
         if ((8 - i) <= energyLevel)
-          TileBattery.model.renderOnly("coil" + i + "lit")
+          Models.battery.renderOnly("coil" + i + "lit")
         else
-          TileBattery.model.renderOnly("coil" + i)
+          Models.battery.renderOnly("coil" + i)
       }
     }
     glPopMatrix()
@@ -229,8 +225,8 @@ class TileBattery extends ResonantTile(Material.iron) with TIO with TBlockNodePr
 
         getIO(check) match
         {
-          case 1 => TileBattery.model.renderOnly("connectorIn")
-          case 2 => TileBattery.model.renderOnly("connectorOut")
+          case 1 => Models.battery.renderOnly("connectorIn")
+          case 2 => Models.battery.renderOnly("connectorOut")
           case _ =>
         }
 
@@ -245,9 +241,9 @@ class TileBattery extends ResonantTile(Material.iron) with TIO with TBlockNodePr
       if (i != 1 || enabledParts.contains("coil1"))
       {
         if ((8 - i) < energyRenderLevel)
-          TileBattery.model.renderOnly("coil" + i + "lit")
+          Models.battery.renderOnly("coil" + i + "lit")
         else
-          TileBattery.model.renderOnly("coil" + i)
+          Models.battery.renderOnly("coil" + i)
       }
     }
 
@@ -256,8 +252,8 @@ class TileBattery extends ResonantTile(Material.iron) with TIO with TBlockNodePr
     disabledParts ++= Set("coil1lit", "coil2lit", "coil3lit", "coil4lit", "coil5lit", "coil6lit", "coil7lit", "coil8lit")
     disabledParts ++= Set("frame1con", "frame2con", "frame3con", "frame4con")
     enabledParts --= Set("coil1", "coil2", "coil3", "coil4", "coil5", "coil6", "coil7", "coil8")
-    TileBattery.model.renderAllExcept(disabledParts.toList: _*)
-    TileBattery.model.renderOnly(enabledParts.toList: _*)
+    Models.battery.renderAllExcept(disabledParts.toList: _*)
+    Models.battery.renderOnly(enabledParts.toList: _*)
 
     /**
      * Render energy tooltip

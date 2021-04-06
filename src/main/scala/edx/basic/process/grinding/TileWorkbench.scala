@@ -1,5 +1,6 @@
 package edx.basic.process.grinding
 
+import edx.basic.Models
 import edx.core.{Electrodynamics, Reference}
 import io.netty.buffer.ByteBuf
 import net.minecraft.block.Block
@@ -7,8 +8,6 @@ import net.minecraft.block.material.Material
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
 import net.minecraft.item.{Item, ItemBlock, ItemStack}
-import net.minecraft.util.ResourceLocation
-import net.minecraftforge.client.model.AdvancedModelLoader
 import net.minecraftforge.oredict.OreDictionary
 import org.lwjgl.opengl.GL11
 import resonantengine.api.edx.recipe.{MachineRecipes, RecipeType}
@@ -36,10 +35,6 @@ import resonantengine.prefab.network.{TPacketReceiver, TPacketSender}
  *
  * @author Calclavia
  */
-object TileWorkbench
-{
-  val model = Array(AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "workbench_0.obj")), AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "workbench_1.obj")))
-}
 
 class TileWorkbench extends ResonantTile(Material.wood) with TInventory with TPacketSender with TPacketReceiver
 {
@@ -167,7 +162,7 @@ class TileWorkbench extends ResonantTile(Material.wood) with TInventory with TPa
     GL11.glColor4f(1, 1, 1, 1)
     GL11.glTranslated(pos.x, pos.y, pos.z)
     RenderUtility.bind(Reference.domain, Reference.modelPath + "workbench_" + metadata + ".png")
-    TileWorkbench.model(metadata).renderAll()
+    Models.workbench(metadata).renderAll()
     GL11.glPopMatrix()
 
   }

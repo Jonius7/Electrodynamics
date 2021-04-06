@@ -3,6 +3,7 @@ package edx.basic.process.sifting
 import java.util.ArrayList
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
+import edx.basic.Models
 import edx.core.Reference
 import edx.core.resource.content.ItemRubble
 import io.netty.buffer.ByteBuf
@@ -10,9 +11,7 @@ import net.minecraft.block.Block
 import net.minecraft.block.material.Material
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
-import net.minecraft.util.ResourceLocation
 import net.minecraftforge.client.IItemRenderer.ItemRenderType
-import net.minecraftforge.client.model.AdvancedModelLoader
 import org.lwjgl.opengl.GL11
 import resonantengine.api.item.ISimpleItemRenderer
 import resonantengine.core.network.discriminator.PacketType
@@ -25,11 +24,6 @@ import resonantengine.lib.utility.inventory.InventoryUtility
 import resonantengine.lib.wrapper.ByteBufWrapper._
 import resonantengine.prefab.block.itemblock.ItemBlockSaved
 import resonantengine.prefab.network.{TPacketReceiver, TPacketSender}
-
-object TileSieve
-{
-  val model = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "sieve.tcn"))
-}
 
 class TileSieve extends ResonantTile(Material.wood) with TInventory with TPacketSender with TPacketReceiver with ISimpleItemRenderer
 {
@@ -80,7 +74,7 @@ class TileSieve extends ResonantTile(Material.wood) with TInventory with TPacket
     GL11.glTranslatef(0.5f, 1f, 0.5f)
     GL11.glScalef(1.4f, 1.4f, 1.4f)
     RenderUtility.bind(Reference.domain, Reference.modelPath + "sieve.png")
-    TileSieve.model.renderAll()
+    Models.sieve.renderAll()
     GL11.glPopMatrix()
   }
 
@@ -99,7 +93,7 @@ class TileSieve extends ResonantTile(Material.wood) with TInventory with TPacket
     GL11.glTranslatef(0.5f, 0.65f, 0.5f)
     GL11.glScalef(1.4f, 1.4f, 1.4f)
     RenderUtility.bind(Reference.domain, Reference.modelPath + "sieve.png")
-    TileSieve.model.renderAll()
+    Models.sieve.renderAll()
     GL11.glPopMatrix()
   }
 

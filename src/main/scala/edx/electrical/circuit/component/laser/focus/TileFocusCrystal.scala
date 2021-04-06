@@ -2,6 +2,7 @@ package edx.electrical.circuit.component.laser.focus
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import edx.core.{Electrodynamics, Reference}
+import edx.electrical.Models
 import edx.electrical.circuit.component.laser.{ILaserHandler, Laser}
 import net.minecraft.block.material.Material
 import net.minecraft.item.ItemStack
@@ -9,7 +10,6 @@ import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity
 import net.minecraft.network.{NetworkManager, Packet}
 import net.minecraft.util.{MovingObjectPosition, ResourceLocation}
-import net.minecraftforge.client.model.AdvancedModelLoader
 import net.minecraftforge.common.util.ForgeDirection
 import org.lwjgl.opengl.GL11._
 import resonantengine.lib.render.RenderUtility
@@ -23,7 +23,6 @@ import resonantengine.lib.transform.vector.Vector3
  */
 object TileFocusCrystal
 {
-  @SideOnly(Side.CLIENT) val model = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "focusCrystal.tcn"))
   @SideOnly(Side.CLIENT) val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "focusCrystal.png")
 }
 
@@ -132,7 +131,7 @@ class TileFocusCrystal extends TileFocus(Material.rock) with ILaserHandler with 
     RenderUtility.bind(TileFocusCrystal.texture)
     glTranslatef(0, 0, 0.08f)
     glScalef(1.3f, 1.3f, 1.3f)
-    TileFocusCrystal.model.renderAll()
+    Models.focuscrystal.renderAll()
 
     RenderUtility.disableBlending()
 
@@ -148,7 +147,7 @@ class TileFocusCrystal extends TileFocus(Material.rock) with ILaserHandler with 
 
     glScaled(2.2, 2.2, 2.2)
     RenderUtility.bind(TileFocusCrystal.texture)
-    TileFocusCrystal.model.renderAll()
+    Models.focuscrystal.renderAll()
 
     RenderUtility.disableBlending()
     glPopMatrix()

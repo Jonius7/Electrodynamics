@@ -1,10 +1,10 @@
 package edx.mechanical.fluid.transport
 
 import edx.core.Reference
+import edx.mechanical.Models
 import edx.mechanical.mech.TileMechanical
 import net.minecraft.block.material.Material
 import net.minecraft.util.ResourceLocation
-import net.minecraftforge.client.model.AdvancedModelLoader
 import net.minecraftforge.common.util.ForgeDirection
 import net.minecraftforge.fluids.{Fluid, FluidStack, FluidTankInfo, IFluidHandler}
 import org.lwjgl.opengl.GL11
@@ -16,7 +16,6 @@ import scala.collection.mutable
 
 object TilePump
 {
-  val model = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "pump.tcn"))
   val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "pump.png")
 }
 
@@ -79,11 +78,11 @@ class TilePump extends TileMechanical(Material.iron) with IRotatable with IFluid
       val innerFin: String = "innerFin" + i
       notRendered.add(fin)
       notRendered.add(innerFin)
-      TilePump.model.renderOnly(fin, innerFin)
+      Models.pump.renderOnly(fin, innerFin)
     }
 
     GL11.glPopMatrix()
-    TilePump.model.renderAllExcept(notRendered.toArray[String]: _*)
+    Models.pump.renderAllExcept(notRendered.toArray[String]: _*)
     GL11.glPopMatrix()
   }
 

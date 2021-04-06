@@ -2,12 +2,12 @@ package edx.electrical.circuit.source
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import edx.core.Reference
+import edx.electrical.Models
 import edx.mechanical.mech.grid.NodeMechanical
 import net.minecraft.block.material.Material
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.{ChatComponentText, ResourceLocation}
-import net.minecraftforge.client.model.AdvancedModelLoader
 import net.minecraftforge.common.util.ForgeDirection
 import org.lwjgl.opengl.GL11
 import resonantengine.lib.content.prefab.TIO
@@ -24,8 +24,6 @@ import resonantengine.prefab.block.impl.{TBlockNodeProvider, TRotatable}
  */
 object TileMotor
 {
-  @SideOnly(Side.CLIENT)
-  val model = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.domain, Reference.modelPath + "motor.tcn"))
   @SideOnly(Side.CLIENT)
   val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "motor.png")
 
@@ -126,7 +124,7 @@ class TileMotor extends ResonantTile(Material.iron) with TIO with TBlockNodeProv
     GL11.glRotatef(90, 0, 1, 0)
     RenderUtility.rotateBlockBasedOnDirection(getDirection)
     RenderUtility.bind(TileMotor.texture)
-    TileMotor.model.renderAll()
+    Models.motor.renderAll()
     GL11.glPopMatrix()
   }
 
