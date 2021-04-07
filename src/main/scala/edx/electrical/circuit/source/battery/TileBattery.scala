@@ -2,6 +2,7 @@ package edx.electrical.circuit.source.battery
 
 import java.util.ArrayList
 
+import cofh.api.energy.{IEnergyHandler, IEnergyReceiver}
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import edx.core.Reference
 import edx.electrical.Models
@@ -43,7 +44,7 @@ object TileBattery
   def getEnergyForTier(tier: Int) = Math.round(Math.pow(500000000, (tier / (maxTier + 0.7f)) + 1) / 500000000) * 500000000
 }
 
-class TileBattery extends ResonantTile(Material.iron) with TIO with TBlockNodeProvider with TPacketSender with TPacketReceiver with TEnergyProvider with ISimpleItemRenderer
+class TileBattery extends ResonantTile(Material.iron) with TIO with TBlockNodeProvider with TPacketSender with TPacketReceiver with TEnergyProvider with ISimpleItemRenderer with IEnergyHandler
 {
   private val electricNode = new NodeElectricComponent(this)
   var energyRenderLevel = 0
@@ -82,6 +83,18 @@ class TileBattery extends ResonantTile(Material.iron) with TIO with TBlockNodePr
       {
         //Recharge battery when current is flowing negative direction
         energy += electricNode.power / 20
+      }
+
+      for (side <- ForgeDirection.VALID_DIRECTIONS) {
+        if (getOutputDirections().contains(side)) {
+          val tile = worldObj.getTileEntity(xCoord + side.offsetX, yCoord + side.offsetY, zCoord + side.offsetZ)
+          if (tile != null && tile.isInstanceOf[IEnergyReceiver]) {
+            val rec = tile.asInstanceOf[IEnergyReceiver]
+            val received = Math.min(rec.receiveEnergy(side.getOpposite, (energy.value / 50).asInstanceOf[Int], true), (energy.value / 50).asInstanceOf[Int])
+            energy -= (received * 50)
+            rec.receiveEnergy(side.getOpposite, received, false)
+          }
+        }
       }
 
 
@@ -273,5 +286,37 @@ class TileBattery extends ResonantTile(Material.iron) with TIO with TBlockNodePr
   {
     super.writeToNBT(nbt)
     energy.save(nbt)
+  }
+
+  override def receiveEnergy(side: ForgeDirection, i: Int, b: Boolean): Int = {
+    val joule: Double = i * 50
+    val maxReceive = Math.min(joule, energy.max - energy.value)
+    if (!b) {
+      energy.setValue(energy.value + maxReceive)
+      markUpdate()
+    }
+    return (maxReceive / 50).asInstanceOf[Int]
+  }
+
+  override def extractEnergy(side: ForgeDirection, i: Int, b: Boolean): Int = {
+    val joule: Double = i * 50
+    val maxExtract = Math.min(joule, energy.value)
+    if (!b) {
+      energy.setValue(energy.value - maxExtract)
+      markUpdate()
+    }
+    return (maxExtract / 50).asInstanceOf[Int]
+  }
+
+  override def getEnergyStored(side: ForgeDirection): Int = {
+    (energy.value / 50).asInstanceOf[Int]
+  }
+
+  override def getMaxEnergyStored(side: ForgeDirection): Int = {
+    (energy.max / 50).asInstanceOf[Int]
+  }
+
+  override def canConnectEnergy(side: ForgeDirection): Boolean = {
+    getOutputDirections().contains(side) || getInputDirections().contains(side)
   }
 }
