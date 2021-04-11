@@ -289,23 +289,29 @@ class TileBattery extends ResonantTile(Material.iron) with TIO with TBlockNodePr
   }
 
   override def receiveEnergy(side: ForgeDirection, i: Int, b: Boolean): Int = {
-    val joule: Double = i * 50
-    val maxReceive = Math.min(joule, energy.max - energy.value)
-    if (!b) {
-      energy.setValue(energy.value + maxReceive)
-      markUpdate()
+    if (getInputDirections().contains(side)) {
+      val joule: Double = i * 50
+      val maxReceive = Math.min(joule, energy.max - energy.value)
+      if (!b) {
+        energy.setValue(energy.value + maxReceive)
+        markUpdate()
+      }
+      return (maxReceive / 50).asInstanceOf[Int]
     }
-    return (maxReceive / 50).asInstanceOf[Int]
+    return 0
   }
 
   override def extractEnergy(side: ForgeDirection, i: Int, b: Boolean): Int = {
-    val joule: Double = i * 50
-    val maxExtract = Math.min(joule, energy.value)
-    if (!b) {
-      energy.setValue(energy.value - maxExtract)
-      markUpdate()
+    if (getOutputDirections().contains(side)) {
+      val joule: Double = i * 50
+      val maxExtract = Math.min(joule, energy.value)
+      if (!b) {
+        energy.setValue(energy.value - maxExtract)
+        markUpdate()
+      }
+      return (maxExtract / 50).asInstanceOf[Int]
     }
-    return (maxExtract / 50).asInstanceOf[Int]
+    return 0
   }
 
   override def getEnergyStored(side: ForgeDirection): Int = {
