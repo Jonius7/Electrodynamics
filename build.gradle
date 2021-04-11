@@ -76,6 +76,9 @@ jar {
     dependsOn copyBuildXml
     classifier = 'core'
     destinationDir = file 'output'
+    manifest {
+        attributes FMLCorePlugin: "resonant.engine.ResonantPluginLoader", FMLCorePluginContainsFMLMod: "true"
+    }
 }
 
 publishing {

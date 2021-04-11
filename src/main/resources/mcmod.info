@@ -15,4 +15,22 @@
     "dependencies": [],
     "dependants": [],
     "useDependencyInformation": "false"
+},
+{
+    "modid": "ResonantEngine",
+    "name": "Resonant Engine",
+    "description": "Universal Electricity is a Minecraft modding library that provides an easy, flexible energy framework and compatibility bridges between various energy systems in Minecraft.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "http://universalelectricity.com/resonant-engine/",
+    "updateUrl": "",
+    "authors": ["Calclavia", "DarkCow", "tgame14", "Alex_hawks"],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "parent": "",
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "useDependencyInformation": "false"
 }]

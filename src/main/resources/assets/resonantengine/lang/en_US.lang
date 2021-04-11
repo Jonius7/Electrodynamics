@@ -1,0 +1,237 @@
+# Resonant Engine Language Properties
+# @author Calclavia
+
+death.attack.electrocution=%1$s got electrocuted!
+
+## Ores
+tile.resonantengine:oreCopper.name=Copper Ore
+tile.resonantengine:oreTin.name=Tin Ore
+tile.resonantengine:oreSilver.name=Silver Ore
+tile.resonantengine:oreLead.name=Lead Ore
+tile.resonantengine:oreZinc.name=Zinc Ore
+tile.resonantengine:oreNickel.name=Nickel Ore
+tile.resonantengine:oreAluminium.name=Bauxite Ore
+tile.resonantengine:oreMagnesium.name=Magnesite Ore
+tile.resonantengine:oreUranium.name=Uranium Ore
+
+## Dust
+item.resonantengine:dustCopper.name=Copper Dust
+item.resonantengine:dustTin.name=Tin Dust
+item.resonantengine:dustSilver.name=Silver Dust
+item.resonantengine:dustLead.name=Lead Dust
+item.resonantengine:dustZinc.name=Zinc Dust
+item.resonantengine:dustNickel.name=Nickel Dust
+item.resonantengine:dustAluminium.name=Aluminium Dust
+item.resonantengine:dustMagnesium.name=Magnesium Dust
+
+item.resonantengine:dustSteel.name=Steel Dust
+item.resonantengine:dustBrass.name=Brass Clump
+item.resonantengine:dustBronze.name=Bronze Clump
+
+## Ruble
+item.resonantengine:rubbleCopper.name=Copper Rubble
+item.resonantengine:rubbleTin.name=Tin Rubble
+item.resonantengine:rubbleSilver.name=Silver Rubble
+item.resonantengine:rubbleLead.name=Lead Rubble
+item.resonantengine:rubbleZinc.name=Zinc Rubble
+item.resonantengine:rubbleNickel.name=Nickel Rubble
+item.resonantengine:rubbleAluminium.name=Aluminium Rubble
+item.resonantengine:rubbleMagnesium.name=Magnesium Rubble
+
+## Ingot
+item.resonantengine:ingotCopper.name=Copper Ingot
+item.resonantengine:ingotTin.name=Tin Ingot
+item.resonantengine:ingotSilver.name=Silver Ingot
+item.resonantengine:ingotLead.name=Lead Ingot
+item.resonantengine:ingotZinc.name=Zinc Ingot
+item.resonantengine:ingotNickel.name=Nickel Ingot
+item.resonantengine:ingotAluminium.name=Aluminium Ingot
+item.resonantengine:ingotMagnesium.name=Magnesium Ingot
+
+item.resonantengine:ingotSteel.name=Steel Ingot
+item.resonantengine:ingotBrass.name=Brass Ingot
+item.resonantengine:ingotBronze.name=Bronze Ingot
+
+## Plate
+item.resonantengine:plateCopper.name=Copper Plate
+item.resonantengine:plateTin.name=Tin Plate
+item.resonantengine:plateSilver.name=Silver Plate
+item.resonantengine:plateLead.name=Lead Plate
+item.resonantengine:plateZinc.name=Zinc Plate
+item.resonantengine:plateNickel.name=Nickel Plate
+item.resonantengine:plateAluminium.name=Aluminium Plate
+item.resonantengine:plateMagnesium.name=Magnesium Plate
+
+item.resonantengine:plateSteel.name=Steel Plate
+item.resonantengine:plateBrass.name=Brass Plate
+item.resonantengine:plateBronze.name=Bronze Plate
+
+## Rod
+item.resonantengine:rodCopper.name=Copper Rod
+item.resonantengine:rodTin.name=Tin Rod
+item.resonantengine:rodSilver.name=Silver Rod
+item.resonantengine:rodLead.name=Lead Rod
+item.resonantengine:rodZinc.name=Zinc Rod
+item.resonantengine:rodNickel.name=Nickel Rod
+item.resonantengine:rodAluminium.name=Aluminium Rod
+item.resonantengine:rodMagnesium.name=Magnesium Rod
+
+item.resonantengine:rodSteel.name=Steel Rod
+item.resonantengine:rodBrass.name=Brass Rod
+item.resonantengine:rodBronze.name=Bronze Rod
+
+## Gear
+item.resonantengine:gearCopper.name=Copper Gear
+item.resonantengine:gearTin.name=Tin Gear
+item.resonantengine:gearSilver.name=Silver Gear
+item.resonantengine:gearLead.name=Lead Gear
+item.resonantengine:gearZinc.name=Zinc Gear
+item.resonantengine:gearNickel.name=Nickel Gear
+item.resonantengine:gearAluminium.name=Aluminium Gear
+item.resonantengine:gearMagnesium.name=Magnesium Gear
+
+item.resonantengine:gearSteel.name=Steel Gear
+item.resonantengine:gearBrass.name=Brass Gear
+item.resonantengine:gearBronze.name=Bronze Gear
+
+## Ax Head
+item.resonantengine:axHeadCopper.name=Copper Ax Head
+item.resonantengine:axHeadTin.name=Tin Ax Head
+item.resonantengine:axHeadSilver.name=Silver Ax Head
+item.resonantengine:axHeadLead.name=Lead Ax Head
+item.resonantengine:axHeadZinc.name=Zinc Ax Head
+item.resonantengine:axHeadNickel.name=Nickel Ax Head
+item.resonantengine:axHeadAluminium.name=Aluminium Ax Head
+item.resonantengine:axHeadMagnesium.name=Magnesium Ax Head
+
+item.resonantengine:axHeadSteel.name=Steel Ax Head
+item.resonantengine:axHeadBrass.name=Brass Ax Head
+item.resonantengine:axHeadBronze.name=Bronze Ax Head
+
+## Shovel Head
+item.resonantengine:shovelHeadCopper.name=Copper Shovel Head
+item.resonantengine:shovelHeadTin.name=Tin Shovel Head
+item.resonantengine:shovelHeadSilver.name=Silver Shovel Head
+item.resonantengine:shovelHeadLead.name=Lead Shovel Head
+item.resonantengine:shovelHeadZinc.name=Zinc Shovel Head
+item.resonantengine:shovelHeadNickel.name=Nickel Shovel Head
+item.resonantengine:shovelHeadAluminium.name=Aluminium Shovel Head
+item.resonantengine:shovelHeadMagnesium.name=Magnesium Shovel Head
+
+item.resonantengine:shovelHeadSteel.name=Steel Shovel Head
+item.resonantengine:shovelHeadBrass.name=Brass Shovel Head
+item.resonantengine:shovelHeadBronze.name=Bronze Shovel Head
+
+## Sword Blade
+item.resonantengine:swordBladeCopper.name=Copper Sword Blade
+item.resonantengine:swordBladeTin.name=Tin Sword Blade
+item.resonantengine:swordBladeSilver.name=Silver Sword Blade
+item.resonantengine:swordBladeLead.name=Lead Sword Blade
+item.resonantengine:swordBladeZinc.name=Zinc Sword Blade
+item.resonantengine:swordBladeNickel.name=Nickel Sword Blade
+item.resonantengine:swordBladeAluminium.name=Aluminium Sword Blade
+item.resonantengine:swordBladeMagnesium.name=Magnesium Sword Blade
+
+item.resonantengine:shovelHeadSteel.name=Steel Shovel Head
+item.resonantengine:shovelHeadBrass.name=Brass Shovel Head
+item.resonantengine:shovelHeadBronze.name=Bronze Shovel Head
+
+## Pick Head
+item.resonantengine:pickHeadCopper.name=Copper Pick Head
+item.resonantengine:pickHeadTin.name=Tin Pick Head
+item.resonantengine:pickHeadSilver.name=Silver Pick Head
+item.resonantengine:pickHeadLead.name=Lead Pick Head
+item.resonantengine:pickHeadZinc.name=Zinc Pick Head
+item.resonantengine:pickHeadNickel.name=Nickel Pick Head
+item.resonantengine:pickHeadAluminium.name=Aluminium Pick Head
+item.resonantengine:pickHeadMagnesium.name=Magnesium Pick Head
+
+item.resonantengine:pickHeadSteel.name=Steel Pick Head
+item.resonantengine:pickHeadBrass.name=Brass Pick Head
+item.resonantengine:pickHeadBronze.name=Bronze Pick Head
+
+## Hoe Head
+item.resonantengine:hoeHeadCopper.name=Copper Hoe Head
+item.resonantengine:hoeHeadTin.name=Tin Hoe Head
+item.resonantengine:hoeHeadSilver.name=Silver Hoe Head
+item.resonantengine:hoeHeadLead.name=Lead Hoe Head
+item.resonantengine:hoeHeadZinc.name=Zinc Hoe Head
+item.resonantengine:hoeHeadNickel.name=Nickel Hoe Head
+item.resonantengine:hoeHeadAluminium.name=Aluminium Hoe Head
+item.resonantengine:hoeHeadMagnesium.name=Magnesium Hoe Head
+
+item.resonantengine:hoeHeadSteel.name=Steel Hoe Head
+item.resonantengine:hoeHeadBrass.name=Brass Hoe Head
+item.resonantengine:hoeHeadBronze.name=Bronze Hoe Head
+
+## Creative Testing Blocks
+tile.resonantengine:creativeBuilder.name=Creative Builder
+tile.resonantengine:infiniteEnergy.name=Infinite Energy
+tile.resonantengine:infiniteFluid.name=Infinite Fluid
+
+## Tools
+toolmode.mode=Mode
+toolmode.general.name=General
+toolmode.rotation.name=Rotation
+
+# Items
+item.resonantengine:screwdriver.name=Screwdriver
+item.resonantengine:screwdriver.tooltip=Used to configure blocks. Shift-right click to change mode.
+
+#Misc
+# %0 goes before the localized name of the shift key, %1 goes after
+tooltip.noShift=Hold #0shift#1 for information
+info.recipes.tooltip=Hold #0J#1 for materials
+
+info.energylevel.waila=Current Energy Level
+info.energycapacity.waila=Maximum Energy Level
+
+info.isCraftingOnlyItem=Crafting Item
+
+info.resonantengine:explosive.name=Explosive
+info.resonantengine:explosive.size.name=Size
+
+## Permissions
+root.machine=Manage Machine
+root.machine.enable=Enable Machine
+root.machine.disable=Disable Machine
+root.machine.open=Open Machine
+root.machine.off=Turn Off Machine
+root.machine.on=Turn On Machine
+root.machine.lock=Lock Machine
+root.machine.unlock=Unlock Machine
+root.machine.upgrade=Upgrade Machine
+root.machine.downgrade=Downgrade Machine
+root.machine.config=Configure Machine
+
+root.group=Manage Groups
+root.group.user=Manage User
+root.group.user.add=Add User
+root.group.user.remove=Remove User
+root.group.entity=Manage Entity
+root.group.entity.add=Add Entity
+root.group.entity.remove=Remove Entity
+root.group.permission=Edit Group Permissions
+root.group.permission.add=Add Group Permissions
+root.group.permission.remove=Remove Group Permissions
+root.group.admin=Administer Group
+root.group.owner=Edit Group Owner
+
+root.profile=Administer Profile
+root.profile.admin=Administer Profile
+root.profile.owner=Edit Profile Owner
+root.profile.addGroup=Add Group
+root.profile.removeGroup=Remove Group
+root.profile.modifyGroup=Edit Group
+root.profile.enable=Enable Profile
+root.profile.user=Manage Users
+
+root.inventory=Manage Inventory
+root.inventory.lock=Lock Inventory
+root.inventory.unlock=Unlock Inventory
+root.inventory.input=Input Inventory
+root.inventory.open=Open Inventory
+root.inventory.output=Output Inventory
+root.inventory.enable=Enable Inventory
+root.inventory.disable=Disable Inventory
+root.inventory.modify=Modify Inventory

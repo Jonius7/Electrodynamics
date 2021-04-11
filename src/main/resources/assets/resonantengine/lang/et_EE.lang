@@ -1,0 +1,26 @@
+# Resonant Engine Language Properties
+# @author tambre
+
+death.attack.electrocution=%1$s sai elektrilöögi!
+
+## Creative Testing Blocks
+tile.resonant:creativeBuilder.name=Loominguline ehitaja
+tile.resonant:infiniteEnergy.name=Lõpmatu energia
+tile.resonant:infiniteFluid.name=Lõpmatu vedelik
+
+## Tools
+toolmode.mode=Mood:
+toolmode.general.name=Üldine
+toolmode.rotation.name=Pööramine
+
+# Items
+item.resonant:screwdriver.name=Kruvikeeraja
+item.resonant:screwdriver.tooltip=Kasutatud plokkide konfigureerimiseks. Shift-parem klikki moodi vahetamiseks.
+
+#Misc
+# %0 goes before the localized name of the shift key, %1 goes after
+tooltip.noShift=Hoia #0shift#1 Rohkema informatsiooni jaoks
+info.recipes.tooltip=Hoia #0J#1 Et näha vajalikke materjale
+
+info.energylevel.waila=Hetke energia tase
+info.energycapacity.waila=Maksimaalne energia tase

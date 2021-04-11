@@ -1,0 +1,26 @@
+# Resonant Engine Language Properties
+# @author Calclavia and Vexatos
+
+death.attack.electrocution=%1$s starb durch einen Stromschlag!
+
+## Creative Testing Blocks
+tile.resonant:creativeBuilder.name=Kreativ-Bauer
+tile.resonant:infiniteEnergy.name=Unendlich Energie
+tile.resonant:infiniteFluid.name=Unendlich Flüssigkeit
+
+## Tools
+toolmode.mode=Modus
+toolmode.general.name=Generell
+toolmode.rotation.name=Drehung
+
+# Items
+item.resonant:screwdriver.name=Schraubendreher
+item.resonant:screwdriver.tooltip=Genutzt, um Blöcke zu konfigurieren. Shift-rechtsklicke, um Modus zu ändern.
+
+#Misc
+# %0 goes before the localized name of the shift key, %1 goes after
+tooltip.noShift=Halte #0Shift#1 für Informationen
+info.recipes.tooltip=Halte #0J#1 für Materialien
+
+info.energylevel.waila=Momentanes Energielevel
+info.energycapacity.waila=Maximales Energielevel

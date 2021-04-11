@@ -1,7 +1,6 @@
 # Compiled source #
 ###################
 *.com
-*.class
 *.dll
 *.exe
 *.o
@@ -43,6 +42,7 @@ Thumbs.db
 .settings/
 build/
 eclipse/
+run/
 .project
 output/
 .cache
