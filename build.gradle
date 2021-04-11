@@ -138,8 +138,7 @@ repositories {
 }
 
 dependencies {
-
-    compile group: 'resonant', name: 'Resonant-Engine', version: "${config.version.resonantengine}", classifier: "dev"
+    compile files("engine")
     testCompile 'junit:junit:4.11'
     testCompile 'jmock:jmock:1.1.0'
     compile "li.cil.oc:OpenComputers:MC1.7.10-1.7.5.1356:api"
