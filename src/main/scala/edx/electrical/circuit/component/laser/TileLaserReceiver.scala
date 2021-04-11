@@ -9,6 +9,7 @@ import net.minecraft.block.material.Material
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import net.minecraft.util.{MovingObjectPosition, ResourceLocation}
+import net.minecraft.world.IBlockAccess
 import net.minecraftforge.common.util.ForgeDirection
 import org.lwjgl.opengl.GL11._
 import resonantengine.lib.grid.energy.electric.NodeElectricComponent
@@ -34,22 +35,27 @@ class TileLaserReceiver extends ResonantTile(Material.rock) with ILaserHandler w
 
   private var energy = 0D
 
+  var redstoneValue = 0
+  private var prevRedstoneValue = 0;
+
   domain = ""
   textureName = "stone"
   normalRender = false
   isOpaqueCube = false
   nodes.add(electricNode)
+  providePower = true
 
   electricNode.dynamicTerminals = true
   electricNode.setPositives(Set(ForgeDirection.NORTH, ForgeDirection.EAST))
   electricNode.setNegatives(Set(ForgeDirection.SOUTH, ForgeDirection.WEST))
 
-  override def canUpdate: Boolean = false
+  override def canUpdate: Boolean = true
 
   override def onLaserHit(renderStart: Vector3, incident: Vector3, hit: MovingObjectPosition, color: Vector3, energy: Double): Boolean =
   {
     if (hit.sideHit == getDirection.ordinal)
     {
+      this.energy += energy
       electricNode.generatePower(energy)
     }
 
@@ -109,4 +115,35 @@ class TileLaserReceiver extends ResonantTile(Material.rock) with ILaserHandler w
 
     glPopMatrix()
   }
+
+  override def update()
+  {
+    super.update()
+    if (energy > 0)
+    {
+      redstoneValue = Math.min(Math.ceil(energy / (Laser.maxEnergy / 15)), 15).toInt
+
+      if (redstoneValue != prevRedstoneValue)
+      {
+        world.notifyBlocksOfNeighborChange(x.toInt, y.toInt, z.toInt, getBlockType)
+        ForgeDirection.VALID_DIRECTIONS.foreach(dir => world.notifyBlocksOfNeighborChange(x.toInt + dir.offsetX, y.toInt + dir.offsetY, z.toInt + dir.offsetZ, getBlockType))
+        prevRedstoneValue = redstoneValue
+      }
+
+      energy = 0
+    }
+    else
+    {
+      redstoneValue = 0
+
+      if (redstoneValue != prevRedstoneValue)
+      {
+        world.notifyBlocksOfNeighborChange(x.toInt, y.toInt, z.toInt, getBlockType)
+        ForgeDirection.VALID_DIRECTIONS.foreach(dir => world.notifyBlocksOfNeighborChange(x.toInt + dir.offsetX, y.toInt + dir.offsetY, z.toInt + dir.offsetZ, getBlockType))
+        prevRedstoneValue = redstoneValue
+      }
+    }
+  }
+
+  override def getWeakRedstonePower(access: IBlockAccess, side: Int): Int = redstoneValue
 }
