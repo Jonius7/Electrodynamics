@@ -3,8 +3,9 @@ package edx.core
 import cpw.mods.fml.common.Mod.EventHandler
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.network.NetworkRegistry
-import cpw.mods.fml.common.{Mod, SidedProxy}
+import cpw.mods.fml.common.{Loader, Mod, SidedProxy}
 import edx.basic.BasicContent
+import edx.core.ftbcompat.{FTBCompatOff, FTBCompatOn, IFTBCompat}
 import edx.core.handler.TextureHookHandler
 import edx.core.resource.AutoResourceFactory
 import edx.electrical.ElectricalContent
@@ -32,6 +33,7 @@ object Electrodynamics
   /** Packets */
   val packetHandler = ResonantEngine.packetHandler
   val loadables = new LoadableHandler
+  var ftbcompat: IFTBCompat = new FTBCompatOff
 
   @SidedProxy(clientSide = "edx.core.ClientProxy", serverSide = "edx.core.CommonProxy")
   var proxy: CommonProxy = _
@@ -62,6 +64,9 @@ object Electrodynamics
   @EventHandler
   def init(evt: FMLInitializationEvent)
   {
+    if (Loader.isModLoaded("FTBU")) {
+      ftbcompat = new FTBCompatOn
+    }
     ResonantPartFactory.init()
     AutoResourceFactory.init()
     loadables.init()
