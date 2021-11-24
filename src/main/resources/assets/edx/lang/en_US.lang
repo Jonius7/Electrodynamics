@@ -201,7 +201,7 @@ item.edx:insulation.name=Insulation
 tile.edx:laserEmitter.name=Laser Emitter
 tile.edx:laserReceiver.name=Laser Receiver
 tile.edx:focusCrystal.name=Focus Crystal
-tile.edx:edxMirror.name=Mirror
+tile.edx:mirror.name=Mirror
 
 tool.mode.set=Mode set to:
 laser.toolmode.remove=Remove
@@ -375,7 +375,7 @@ tile.edx:quantumAssembler.name=Quantum Assembler
 tile.edx:quantumAssembler.tooltip=Reassembles Dark Matter atoms into usable materials.
 tile.edx:toxicWaste.name=Toxic Waste
 tile.edx:toxicWaste.tooltip=Toxic, nuclear waste that pollutes the world.
-tile.edx:edxMirror.name = Mirror
+tile.edx:mirror.name = Mirror
 
 ## Tooltips
 tooltip.energy=Energy
