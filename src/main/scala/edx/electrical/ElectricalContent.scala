@@ -6,7 +6,7 @@ import cpw.mods.fml.common.registry.GameRegistry
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import edx.core.{EDXCreativeTab, Reference, ResonantPartFactory}
 import edx.electrical.circuit.component.TileSiren
-import edx.electrical.circuit.component.laser.focus.{ItemFocusingMatrix, TileFocusCrystal, TileMirror}
+import edx.electrical.circuit.component.laser.focus.{ItemFocusingMatrix, TileFocusCrystal, TileEdxMirror}
 import edx.electrical.circuit.component.laser.{TileLaserEmitter, TileLaserReceiver}
 import edx.electrical.circuit.component.tesla.TileTesla
 import edx.electrical.circuit.source.battery.{ItemBlockBattery, TileBattery}
@@ -51,7 +51,7 @@ object ElectricalContent extends ContentHolder
 
   var blockLaserEmitter: Block = new TileLaserEmitter
   var blockLaserReceiver: Block = new TileLaserReceiver
-  var blockMirror: Block = new TileMirror
+  var blockMirror: Block = new TileEdxMirror
   var blockFocusCrystal: Block = new TileFocusCrystal
   var blockSiren: Block = new TileSiren
 

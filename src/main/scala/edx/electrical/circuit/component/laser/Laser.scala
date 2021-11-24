@@ -88,7 +88,7 @@ object Laser
             /**
              * Attempt to burn block
              */
-            if (!world.isRemote && Electrodynamics.ftbcompat.canDestroyBlock(hitBlockPos.toVec3, start.toVec3, world))
+            if (!world.isRemote)// && Electrodynamics.ftbcompat.canDestroyBlock(hitBlockPos.toVec3, start.toVec3, world))
             {
               val hardness = hitBlock.getBlockHardness(world, hitBlockPos.x.toInt, hitBlockPos.y.toInt, hitBlockPos.z.toInt)
 
