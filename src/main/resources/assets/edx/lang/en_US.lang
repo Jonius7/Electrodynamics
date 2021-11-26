@@ -226,7 +226,7 @@ item.edx:wire.silver.name=Silver Wire
 item.edx:wire.superconductor.name=Superconductor Wire
 item.edx:electricTransformer.name=Transformer
 item.edx:multimeter.name=Multimeter
-item.edx:multimeter.tooltip=Multimeter is a panel that display the energy and fluid information of a block.
+item.resonantinduction:multimeter.tooltip=Multimeter is a panel that display the energy and fluid information of a block.
 
 ### Quantum Tier
 tile.edx:quantumGate.name=Quantum Gate

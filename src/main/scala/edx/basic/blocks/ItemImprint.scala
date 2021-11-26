@@ -62,7 +62,7 @@ object ItemImprint
     val nbt: NBTTagCompound = NBTUtility.getNBTTagCompound(itemStack)
     val tagList: NBTTagList = nbt.getTagList("Items", 0)
 
-    for (i <- 0 to tagList.tagCount)
+    for (i <- 0 until tagList.tagCount)
     {
       val var4: NBTTagCompound = tagList.getCompoundTagAt(i)
       filterStacks.add(ItemStack.loadItemStackFromNBT(var4))
@@ -77,7 +77,7 @@ object ItemImprint
     val nbt: NBTTagCompound = NBTUtility.getNBTTagCompound(itemStack)
     val tagList: NBTTagList = nbt.getTagList("Items", 0)
 
-    for (i <- 0 to tagList.tagCount)
+    for (i <- 0 until tagList.tagCount)
     {
       val var4: NBTTagCompound = tagList.getCompoundTagAt(i)
       filterStacks.add(ItemStack.loadItemStackFromNBT(var4))

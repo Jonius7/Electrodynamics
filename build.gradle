@@ -31,7 +31,7 @@ buildProps.withReader {
     ext.config = new ConfigSlurper().parse prop
 }
 
-version = "${config.version.mod.major}.${config.version.mod.minor}.${config.version.mod.revis}"
+version = "${config.version.mod.major}.${config.version.mod.minor}.${config.version.mod.revis}.${config.version.mod.patch}"
 group = "dev.calclavia.electrodynamics"
 archivesBaseName = "electrodynamics"
 
@@ -43,6 +43,7 @@ minecraft {
     replace "@MAJOR@", config.version.mod.major
     replace "@MINOR@", config.version.mod.minor
     replace "@REVIS@", config.version.mod.revis
+    replace "@PATCH@", config.version.mod.patch
 }
 
 if (System.getenv("BUILD_NUMBER") != null)

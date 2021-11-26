@@ -28,7 +28,7 @@ object Electrodynamics
 
   final val id = "EDX"
   final val name = "Electrodynamics"
-  final val version = "@MAJOR@.@MINOR@.@REVIS@"
+  final val version = "@MAJOR@.@MINOR@.@REVIS@.@PATCH@"
 
   /** Packets */
   val packetHandler = ResonantEngine.packetHandler
