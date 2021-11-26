@@ -48,7 +48,7 @@ class TileImprinter extends ResonantTile(Material.circuits) with ISidedInventory
     super.writeToNBT(nbt)
     val var2: NBTTagList = new NBTTagList
 
-    for (i <- 0 to this.getSizeInventory)
+    for (i <- 0 until this.getSizeInventory)
     {
       if (this.getStackInSlot(i) != null)
       {

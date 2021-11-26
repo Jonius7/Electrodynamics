@@ -18,7 +18,7 @@ import resonantengine.lib.transform.vector.Vector3
 
 import scala.collection.convert.wrapAsJava._
 
-object TileMirror
+object TileEdxMirror
 {
   val texture = new ResourceLocation(Reference.domain, Reference.modelPath + "mirror.png")
 }
@@ -30,7 +30,7 @@ object TileMirror
  *
  * @author Calclavia
  */
-class TileMirror extends TileFocus(Material.glass) with ILaserHandler with IFocus
+class TileEdxMirror extends TileFocus(Material.glass) with ILaserHandler with IFocus
 {
   private var normal = new Vector3(0, 1, 0)
   private var cachedHits = List[Vector3]()
@@ -140,13 +140,13 @@ class TileMirror extends TileFocus(Material.glass) with ILaserHandler with IFocu
     glPushMatrix()
     glTranslated(pos.x + 0.5, pos.y + 0.5, pos.z + 0.5)
 
-    FMLClientHandler.instance.getClient.renderEngine.bindTexture(TileMirror.texture)
+    FMLClientHandler.instance.getClient.renderEngine.bindTexture(TileEdxMirror.texture)
 
     val angle = normal.toEulerAngle
     glRotated(angle.yaw, 0, 1, 0)
     glRotated(angle.pitch, 1, 0, 0)
     glRotated(90, 1, 0, 0)
-    Models.mirror.renderOnly("mirror", "mirrorBacking", "standConnector")
+    Models.edxmirror.renderOnly("mirror", "mirrorBacking", "standConnector")
 
     glPopMatrix()
   }
@@ -156,8 +156,8 @@ class TileMirror extends TileFocus(Material.glass) with ILaserHandler with IFocu
   {
     glPushMatrix()
 
-    FMLClientHandler.instance.getClient.renderEngine.bindTexture(TileMirror.texture)
-    Models.mirror.renderAll()
+    FMLClientHandler.instance.getClient.renderEngine.bindTexture(TileEdxMirror.texture)
+    Models.edxmirror.renderAll()
 
     glPopMatrix()
   }

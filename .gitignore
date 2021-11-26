@@ -51,3 +51,14 @@ output/
 *.idea/
 *.iml
 .metadata/
+
+###Minecraft
+asm
+config
+crash-reports
+local
+modpack
+saves
+stats
+options.txt
+usernamecache.json
