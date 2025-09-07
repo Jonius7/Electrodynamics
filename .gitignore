@@ -51,6 +51,8 @@ output/
 *.idea/
 *.iml
 .metadata/
+.metals
+.vscode
 
 ###Minecraft
 asm

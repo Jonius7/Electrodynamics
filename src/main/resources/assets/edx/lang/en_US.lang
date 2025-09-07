@@ -167,8 +167,8 @@ tile.edx:pump.name=Pump
 tile.edx:grate.name=Grate
 tile.edx:conveyorBelt.name=Conveyor Belt
 
-tile.edx:detector.name=Detector
-tile.edx:detector.tooltip=Outputs a Redstone signal upon item detection. Configure to invert imprint filter.
+tile.edx:edxDetector.name=Detector
+tile.edx:edxDetector.tooltip=Outputs a Redstone signal upon item detection. Configure to invert imprint filter.
 tile.edx:manipulator.name=Manipulator
 tile.edx:rejector.name=Rejector
 tile.edx:sorter.name=Sorter

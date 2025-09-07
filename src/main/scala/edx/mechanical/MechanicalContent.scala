@@ -4,7 +4,7 @@ import edx.core.interfaces.TNodeMechanical
 import edx.core.{EDXCreativeTab, Reference, ResonantPartFactory}
 import edx.mechanical.fluid.pipe.{ItemPipe, PartPipe, PipeMaterials}
 import edx.mechanical.fluid.transport.TilePump
-import edx.mechanical.machine.TileDetector
+import edx.mechanical.machine.TileEdxDetector
 import edx.mechanical.machine.edit.{TileBreaker, TilePlacer}
 import edx.mechanical.mech.gear.{ItemGear, PartGear}
 import edx.mechanical.mech.gearshaft.{ItemGearShaft, PartGearShaft}
@@ -38,7 +38,7 @@ object MechanicalContent extends ContentHolder
 
   var blockWindTurbine: Block = new TileWindTurbine
   var blockWaterTurbine: Block = new TileWaterTurbine
-  var blockDetector: Block = new TileDetector
+  var blockDetector: Block = new TileEdxDetector
   var blockPump: Block = new TilePump
   var blockGrinderWheel: Block = new TileGrindingWheel
   var blockMixer: Block = new TileMixer

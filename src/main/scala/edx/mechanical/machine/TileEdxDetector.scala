@@ -22,7 +22,7 @@ import resonantengine.core.network.discriminator.{PacketTile, PacketType}
 import resonantengine.lib.modcontent.block.ResonantBlock
 import resonantengine.prefab.network.TPacketReceiver
 
-class TileDetector extends TileFilterable with TPacketReceiver
+class TileEdxDetector extends TileFilterable with TPacketReceiver
 {
   private var powering: Boolean = false
 
@@ -140,10 +140,10 @@ class TileDetector extends TileFilterable with TPacketReceiver
     var isInverted: Boolean = false
     var isFront: Boolean = false
     val tileEntity: TileEntity = iBlockAccess.getTileEntity(x.toInt, y.toInt, z.toInt)
-    if (tileEntity.isInstanceOf[TileDetector])
+    if (tileEntity.isInstanceOf[TileEdxDetector])
     {
-      isFront = side == (tileEntity.asInstanceOf[TileDetector]).getDirection.ordinal
-      isInverted = (tileEntity.asInstanceOf[TileDetector]).isInverted
+      isFront = side == (tileEntity.asInstanceOf[TileEdxDetector]).getDirection.ordinal
+      isInverted = (tileEntity.asInstanceOf[TileEdxDetector]).isInverted
     }
     return if (isInverted) (if (isFront) ResonantBlock.icon.get("detector_front_red") else ResonantBlock.icon.get("detector_side_red")) else (if (isFront) ResonantBlock.icon.get("detector_front_green") else ResonantBlock.icon.get("detector_side_green"))
   }
